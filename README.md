@@ -6,6 +6,6 @@
 [![React](https://img.shields.io/badge/-React-807E7E?style=flat-square&logo=react&link=https://github.com/swsoyee/)](https://github.com/swsoyee/)
 [![Python](https://img.shields.io/badge/-Python-A9A8A8?style=flat-square&logo=Python&link=https://github.com/swsoyee/)](https://github.com/swsoyee/)
 
-### Activity
+### Github Stats
 
-[![swsoyee's github stats](https://github-readme-stats.vercel.app/api?username=swsoyee&title_color=565454&icon_color=A9A8A8&show_icons=true)](https://github.com/swsoyee)
+[![swsoyee's github stats](https://github-readme-stats.vercel.app/api?username=swsoyee&title_color=565454&icon_color=A9A8A8&show_icons=true&hide_border=true&hide_title=true)](https://github.com/swsoyee)
