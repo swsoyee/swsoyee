@@ -1,0 +1,30 @@
+name: 'update data'
+
+on:
+  pull_request:
+    branches: [ master ]
+  schedule:
+    - cron: '0 23 * * *'
+
+jobs:
+  bot:
+    name: Data Update
+    runs-on: macOS-latest
+    steps:
+      - name: 'Checkout codes'
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }}
+      - name: 'Setup R environment'
+        uses: r-lib/actions/setup-r@v1
+      - name: Install package dependencies
+        run: |-
+          Rscript -e "install.packages(c('data.table', 'jsonlite'))"
+      - name: Run script
+        run: |
+          Rscript -e 'source("src/Fetch.R")'
+      - name: Git auto commit
+        uses: stefanzweifel/git-auto-commit-action@v4.1.6
+        with:
+          commit_message: update data
+          ref: ${{ github.head_ref }}
