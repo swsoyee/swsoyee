@@ -2,7 +2,7 @@ name: 'update data'
 
 on:
   pull_request:
-    branches: [ master ]
+    branches: [master]
   schedule:
     - cron: '0 23 * * *'
 
@@ -26,5 +26,5 @@ jobs:
       - name: Git auto commit
         uses: stefanzweifel/git-auto-commit-action@v4.1.6
         with:
-          commit_message: update data
+          commit_message: 'update: data'
           ref: ${{ github.head_ref }}
