@@ -27,4 +27,3 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4.1.6
         with:
           commit_message: 'update: data'
-          ref: ${{ github.head_ref }}
