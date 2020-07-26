@@ -14,9 +14,11 @@
 
 #### Web Services
 
-* <a href='https://github.com/swsoyee/2019-ncov-japan' target='_blank'>🦠COVID-19 BULLETIN BOARD</a>
+* <a href='https://github.com/swsoyee/2019-ncov-japan' target='_blank'>🦠 COVID-19 BULLETIN BOARD</a>
+
   > Interactive dashboard for real-time recording of COVID-19 outbreak in Japan
-* <a href='https://github.com/swsoyee/2019-ncov-japan' target='_blank'>📊TCC-GUI</a>
+* <a href='https://github.com/swsoyee/2019-ncov-japan' target='_blank'>📊 TCC-GUI</a>
+
   > Graphical User Interface for `TCC` package
 
 </td>
@@ -24,7 +26,8 @@
 
 #### Extensions
 
-* <a href='https://github.com/swsoyee/psnine-enhanced-version' target='_blank'>🧰PSN中文网功能增强插件</a>
+* <a href='https://github.com/swsoyee/psnine-enhanced-version' target='_blank'>🧰 PSN中文网功能增强插件</a>
+
   > Extension for improving the UX of psnine.com
 
 </td>
@@ -33,7 +36,8 @@
 
 #### Style
 
-* <a href='https://github.com/swsoyee/psnine-enhanced-version' target='_blank'>🕶️PSN中文网夜间模式</a>
+* <a href='https://github.com/swsoyee/psnine-enhanced-version' target='_blank'>🕶️ PSN中文网夜间模式</a>
+
   > Dark mode for psnine.com
 
 </td>
