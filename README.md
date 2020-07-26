@@ -11,7 +11,9 @@
 <table>
 <tr>
 <td valign="top" width="33%">
-<h4>Web Services</h4>
+<br>
+
+[![Web](https://img.shields.io/badge/-🖥️WEB-A9A8A8?style=for-the-badge)](https://github.com/swsoyee/)
 
 * <a href='https://github.com/swsoyee/2019-ncov-japan' target='_blank'>🦠 COVID-19 BULLETIN BOARD</a>  
   [![R](https://img.shields.io/badge/-Shiny-black?style=flat-square&logo=r&link=https://github.com/swsoyee/2019-ncov-japan)](https://github.com/swsoyee/2019-ncov-japan) [![page views](https://img.shields.io/badge/dynamic/json?url=https://cdn.covid-2019.live/static/stats.json&label=PV&query=$.result.totals.pageviews.all&color=orange&style=flat-square&link=https://covid-2019.live/en/)](https://covid-2019.live/en/)
@@ -22,7 +24,9 @@
 
 </td>
 <td valign="top" width="33%">
-<h4>Extensions</h4>
+<br>
+
+[![Extensions](https://img.shields.io/badge/-🛠️Extensions-A9A8A8?style=for-the-badge)](https://github.com/swsoyee/)
 
 * <a href='https://github.com/swsoyee/psnine-enhanced-version' target='_blank'>🧰 PSN中文网功能增强插件</a>  
   [![JavaScript](https://img.shields.io/badge/-JavaScript-565454?style=flat-square&logo=JavaScript&link=https://github.com/swsoyee/psnine-enhanced-version)](https://github.com/swsoyee/psnine-enhanced-version) [![install](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/swsoyee/swsoyee/master/public/data.json&label=installs&query=$.psnine_enhance_install[0]&color=orange&style=flat-square)](https://greasyfork.org/zh-CN/scripts/375985-psn%E4%B8%AD%E6%96%87%E7%BD%91%E5%8A%9F%E8%83%BD%E5%A2%9E%E5%BC%BA)
@@ -30,7 +34,9 @@
 
 </td>
 <td valign="top" width="33%">
-<h4>Style</h4>
+<br>
+
+[![Style](https://img.shields.io/badge/-🌈Style-A9A8A8?style=for-the-badge)](https://github.com/swsoyee/)
 
 * <a href='https://github.com/swsoyee/psnine-enhanced-version' target='_blank'>🕶️ PSN中文网夜间模式</a>  
   [![css](https://img.shields.io/badge/-CSS-A9A8A8?style=flat-square&logo=CSS3&link=https://github.com/swsoyee/psnine-enhanced-version)](https://github.com/swsoyee/psnine-enhanced-version)
