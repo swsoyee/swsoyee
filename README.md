@@ -25,16 +25,19 @@
 <h4>　Extensions</h4>
 
 * <a href='https://github.com/swsoyee/psnine-enhanced-version' target='_blank'>🧰 PSN中文网功能增强插件</a>  
-  [![JavaScript](https://img.shields.io/badge/-JavaScript-565454?style=flat-square&logo=JavaScript&link=https://github.com/swsoyee/psnine-enhanced-version)](https://github.com/swsoyee/psnine-enhanced-version) [![install](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/swsoyee/swsoyee/master/public/data.json&label=installs&query=$.psnine_enhance_install[0]&color=orange&style=flat-square)](https://greasyfork.org/zh-CN/scripts/375985-psn%E4%B8%AD%E6%96%87%E7%BD%91%E5%8A%9F%E8%83%BD%E5%A2%9E%E5%BC%BA)
-  > Extension for improving the UX of [psnine.com](https://www.psnine.com/)
+  [![JavaScript](https://img.shields.io/badge/-JavaScript-565454?style=flat-square&logo=JavaScript&link=https://github.com/swsoyee/psnine-enhanced-version)](https://github.com/swsoyee/psnine-enhanced-version) [![install](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/swsoyee/swsoyee/master/public/data.json&label=Install&query=$.psnine_enhance_install[0]&color=orange&style=flat-square)](https://greasyfork.org/zh-CN/scripts/375985-psn%E4%B8%AD%E6%96%87%E7%BD%91%E5%8A%9F%E8%83%BD%E5%A2%9E%E5%BC%BA)
+  > Extension for improving the UX of [`PSNINE`](https://www.psnine.com/)
 
 </td>
 <td valign="top" width="33%">
 <h4>　Style</h4>
 
 * <a href='https://github.com/swsoyee/psnine-enhanced-version' target='_blank'>🕶️ PSN中文网夜间模式</a>  
-  [![css](https://img.shields.io/badge/-CSS-A9A8A8?style=flat-square&logo=CSS3&link=https://github.com/swsoyee/psnine-enhanced-version)](https://github.com/swsoyee/psnine-enhanced-version)
-  > Dark mode for [psnine.com](https://www.psnine.com/)
+  [![css](https://img.shields.io/badge/-CSS-A9A8A8?style=flat-square&logo=CSS3&link=https://github.com/swsoyee/psnine-enhanced-version)](https://userstyles.org/styles/167244/p9) [![Install](https://img.shields.io/badge/Install-1507-orange?style=flat-square&link=https://userstyles.org/styles/167244/p9)](https://userstyles.org/styles/167244/p9)
+  > Dark mode for [`PSNINE`](https://www.psnine.com/)
+* <a href='https://github.com/swsoyee/CloudMusic-night-mode' target='_blank'>🕶️ 网易云音乐夜间模式</a>  
+  [![css](https://img.shields.io/badge/-CSS-A9A8A8?style=flat-square&logo=CSS3&link=https://github.com/swsoyee/CloudMusic-night-moden)](https://userstyles.org/styles/139774/theme) [![Install](https://img.shields.io/badge/Install-534-orange?style=flat-square&link=https://userstyles.org/styles/139774/theme)](https://userstyles.org/styles/139774/theme)
+  > Dark mode for [`NetEase Music`](https://music.163.com/)
 
 </td>
 </tr>
