@@ -1,10 +1,11 @@
 ### Tech
 
-[![R](https://img.shields.io/badge/-programming-black?style=flat-square&logo=r&link=https://github.com/swsoyee/)](https://github.com/swsoyee/)
-[![JavaScript](https://img.shields.io/badge/-JavaScript-565454?style=flat-square&logo=JavaScript&link=https://github.com/swsoyee/)](https://github.com/swsoyee/)
+[![R](https://img.shields.io/badge/-programming-black?style=flat-square&logo=r&link=https://github.com/swsoyee?tab=repositories&q=&type=source&language=r)](https://github.com/swsoyee?tab=repositories&q=&type=source&language=r)
+[![JavaScript](https://img.shields.io/badge/-JavaScript-565454?style=flat-square&logo=JavaScript&link=https://github.com/swsoyee?tab=repositories&q=&type=source&language=javascript)](https://github.com/swsoyee?tab=repositories&q=&type=source&language=javascript)
 [![PostgreSQL](https://img.shields.io/badge/-PostgreSQL-565454?style=flat-square&logo=postgresql&link=https://github.com/swsoyee/)](https://github.com/swsoyee/)
-[![React](https://img.shields.io/badge/-React-807E7E?style=flat-square&logo=react&link=https://github.com/swsoyee/)](https://github.com/swsoyee/)
-[![Python](https://img.shields.io/badge/-Python-A9A8A8?style=flat-square&logo=Python&link=https://github.com/swsoyee/)](https://github.com/swsoyee/)
+[![React](https://img.shields.io/badge/-React-807E7E?style=flat-square&logo=react&link=https://github.com/swsoyee?tab=repositories&q=&type=source&language=typescript)](https://github.com/swsoyee?tab=repositories&q=&type=source&language=typescript)
+[![Python](https://img.shields.io/badge/-Python-A9A8A8?style=flat-square&logo=Python&link=https://github.com/swsoyee?tab=repositories&q=&type=source&language=python)](https://github.com/swsoyee?tab=repositories&q=&type=source&language=python)
+[![css](https://img.shields.io/badge/-CSS-A9A8A8?style=flat-square&logo=CSS3&link=https://github.com/swsoyee?tab=repositories&q=&type=source&language=css)](https://github.com/swsoyee?tab=repositories&q=&type=source&language=css)
 
 ### Products
 
