@@ -19,7 +19,7 @@ jobs:
         uses: r-lib/actions/setup-r@v1
       - name: Install package dependencies
         run: |-
-          Rscript -e "install.packages(c('data.table', 'jsonlite', 'curl'))"
+          Rscript -e "install.packages(c('data.table', 'jsonlite', 'curl', 'rvest'))"
       - name: Run script
         run: |
           Rscript -e 'source("src/Fetch.R")'
