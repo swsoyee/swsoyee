@@ -15,10 +15,10 @@
 <h4>　Web Service</h4>
 
 * <a href='https://github.com/swsoyee/2019-ncov-japan' target='_blank'>🦠 COVID-19 BULLETIN BOARD</a>  
-  [![R](https://img.shields.io/badge/-Shiny-black?style=flat-square&logo=r&link=https://github.com/swsoyee/2019-ncov-japan)](https://github.com/swsoyee/2019-ncov-japan) [![page views](https://img.shields.io/badge/dynamic/json?url=https://cdn.covid-2019.live/static/stats.json&label=PV&query=$.result.totals.pageviews.all&color=orange&style=flat-square&link=https://covid-2019.live/en/)](https://covid-2019.live/en/)
+  [![R](https://img.shields.io/badge/-Shiny-black?style=flat-square&logo=r&link=https://github.com/swsoyee/2019-ncov-japan)](https://github.com/swsoyee/2019-ncov-japan) [![page views](https://img.shields.io/badge/dynamic/json?url=https://cdn.covid-2019.live/static/stats.json&label=PV&query=$.result.totals.pageviews.all&color=green&style=flat-square&link=https://covid-2019.live/en/)](https://covid-2019.live/en/)
   > Interactive dashboard for real-time recording of COVID-19 outbreak in Japan
 * <a href='https://github.com/swsoyee/TCC-GUI' target='_blank'>📊 TCC-GUI</a>  
-  [![R](https://img.shields.io/badge/-Shiny-black?style=flat-square&logo=r&link=https://github.com/swsoyee/TCC-GUI)](https://github.com/swsoyee/TCC-GUI) [![Citations](https://img.shields.io/badge/Citations-5-orange?style=flat-square&link=https://bmcresnotes.biomedcentral.com/articles/10.1186/s13104-019-4179-2)](https://bmcresnotes.biomedcentral.com/articles/10.1186/s13104-019-4179-2)
+  [![R](https://img.shields.io/badge/-Shiny-black?style=flat-square&logo=r&link=https://github.com/swsoyee/TCC-GUI)](https://github.com/swsoyee/TCC-GUI) [![Citations](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/swsoyee/swsoyee/master/public/data.json&label=Citations&query=$.citations[0]&style=flat-square&link=https://bmcresnotes.biomedcentral.com/articles/10.1186/s13104-019-4179-2)](https://bmcresnotes.biomedcentral.com/articles/10.1186/s13104-019-4179-2)
   > Graphical User Interface for [`TCC`](https://bioconductor.org/packages/release/bioc/html/TCC.html) package
 
 </td>
