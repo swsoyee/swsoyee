@@ -1,5 +1,7 @@
 ### Tech
 
+<img src="https://github-readme-stats.vercel.app/api/top-langs/?hide_title=true&username=swsoyee&hide=html,matlab" align="right" />
+
 [![R](https://img.shields.io/badge/-programming-black?style=flat-square&logo=r&link=https://github.com/swsoyee?tab=repositories&q=&type=source&language=r)](https://github.com/swsoyee?tab=repositories&q=&type=source&language=r)
 [![JavaScript](https://img.shields.io/badge/-JavaScript-565454?style=flat-square&logo=JavaScript&link=https://github.com/swsoyee?tab=repositories&q=&type=source&language=javascript)](https://github.com/swsoyee?tab=repositories&q=&type=source&language=javascript)
 [![PostgreSQL](https://img.shields.io/badge/-PostgreSQL-565454?style=flat-square&logo=postgresql&link=https://github.com/swsoyee/)](https://github.com/swsoyee/)
