@@ -23,9 +23,11 @@
 #### 2. Package
 
 - [📰 pagemap](https://github.com/swsoyee/pagemapR)
+
   [![R build status](https://github.com/swsoyee/pagemapR/workflows/R-CMD-check/badge.svg)](https://github.com/swsoyee/pagemapR/actions) [![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/pagemap)](https://cran.r-project.org/package=pagemap) [![metacran downloads](https://cranlogs.r-pkg.org/badges/grand-total/pagemap)](https://cran.r-project.org/package=pagemap)
   > Quickly and easily add a mini map to web page
 - [🧬 r3dmol](https://github.com/swsoyee/r3dmol)
+
   [![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/r3dmol)](https://cran.r-project.org/package=r3dmol) [![life cycle](https://img.shields.io/badge/lifecycle-experimental-orange)](https://swsoyee.github.io/r3dmol/)
   > An R package for visualize protein structure in 3D
 
