@@ -29,8 +29,8 @@
 <img src="https://github-readme-stats.vercel.app/api?username=swsoyee&title_color=565454&icon_color=A9A8A8&show_icons=true&hide_border=true&hide_title=true" align="right">
 
 - <a href='https://github.com/swsoyee/psnine-enhanced-version' target='_blank'>🕶️ PSN 中文网夜间模式</a>  
-  [![css](https://img.shields.io/badge/-CSS-A9A8A8?style=flat-square&logo=CSS3&link=https://github.com/swsoyee/psnine-enhanced-version)](https://userstyles.org/styles/167244/p9) [![Install](https://img.shields.io/badge/Install-1507-orange?style=flat-square&link=https://userstyles.org/styles/167244/p9)](https://userstyles.org/styles/167244/p9)
+  [![css](https://img.shields.io/badge/-CSS-A9A8A8?style=flat-square&logo=CSS3&link=https://github.com/swsoyee/psnine-enhanced-version)](https://userstyles.org/styles/167244/p9) [![Install](https://img.shields.io/badge/Install-1721-orange?style=flat-square&link=https://userstyles.org/styles/167244/p9)](https://userstyles.org/styles/167244/p9)
   > Dark mode for [`PSNINE`](https://www.psnine.com/)
 - <a href='https://github.com/swsoyee/CloudMusic-night-mode' target='_blank'>🕶️ 网易云音乐夜间模式</a>  
-  [![css](https://img.shields.io/badge/-CSS-A9A8A8?style=flat-square&logo=CSS3&link=https://github.com/swsoyee/CloudMusic-night-moden)](https://userstyles.org/styles/139774/theme) [![Install](https://img.shields.io/badge/Install-534-orange?style=flat-square&link=https://userstyles.org/styles/139774/theme)](https://userstyles.org/styles/139774/theme)
+  [![css](https://img.shields.io/badge/-CSS-A9A8A8?style=flat-square&logo=CSS3&link=https://github.com/swsoyee/CloudMusic-night-moden)](https://userstyles.org/styles/139774/theme) [![Install](https://img.shields.io/badge/Install-572-orange?style=flat-square&link=https://userstyles.org/styles/139774/theme)](https://userstyles.org/styles/139774/theme)
   > Dark mode for [`NetEase Music`](https://music.163.com/)
