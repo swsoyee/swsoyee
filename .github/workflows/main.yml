@@ -9,7 +9,7 @@ on:
 jobs:
   bot:
     name: Data Update
-    runs-on: ubuntu-latest
+    runs-on: macOS-latest
     steps:
       - name: 'Checkout codes'
         uses: actions/checkout@v2
