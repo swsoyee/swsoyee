@@ -18,7 +18,7 @@
   [![R](https://img.shields.io/badge/-black?logo=r&link=https://github.com/swsoyee/TCC-GUI)](https://github.com/swsoyee/TCC-GUI) [![citations](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/swsoyee/swsoyee/master/public/data.json&label=citations&query=$.citations[0]&link=https://bmcresnotes.biomedcentral.com/articles/10.1186/s13104-019-4179-2)](https://bmcresnotes.biomedcentral.com/articles/10.1186/s13104-019-4179-2)
   > Graphical User Interface for [`TCC`](https://bioconductor.org/packages/release/bioc/html/TCC.html) package
 - <a href='https://github.com/swsoyee/pagemapR' target='_blank'>📰 pagemap</a>  
-  [![R build status](https://github.com/swsoyee/pagemapR/workflows/R-CMD-check/badge.svg)](https://github.com/swsoyee/pagemapR/actions) [![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/pagemap)](https://cran.r-project.org/package=pagemap) [![metacran downloads](https://cranlogs.r-pkg.org/badges/grand-total/pagemap)](https://cran.r-project.org/package=pagemap)
+  [![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/pagemap)](https://cran.r-project.org/package=pagemap) [![metacran downloads](https://cranlogs.r-pkg.org/badges/grand-total/pagemap)](https://cran.r-project.org/package=pagemap)
   > Quickly and easily add a mini map to web page
 - <a href='https://github.com/swsoyee/r3dmol' target='_blank'>🧬 r3dmol</a>  
   [![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/r3dmol)](https://cran.r-project.org/package=r3dmol) [![life cycle](https://img.shields.io/badge/lifecycle-experimental-orange)](https://swsoyee.github.io/r3dmol/)
