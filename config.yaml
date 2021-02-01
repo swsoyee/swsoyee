@@ -4,6 +4,38 @@ title: Infinity Loop
 theme: "hugo-theme-fuji"
 googleAnalytics: 'UA-131217026-1'
 disqusShortname: ''
+hasCJKLanguage: true
+enableEmoji: true
+enableRobotsTXT: true
+disableKinds:
+  - taxonomy
+ignoreErrors:
+  - error-disable-taxonomy
+defaultContentLanguage: en
+summaryLength: 80
+paginate: 10
+outputFormats:
+  SearchIndex:
+    isPlainText: true
+    notAlternative: true
+    mediaType: application/json
+    path: /search/
+outputs:
+  home:
+    - HTML
+    - RSS
+    - SearchIndex
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+  highlight:
+    codeFences: false
+  tableOfContents:
+    startLevel: 2
+    endLevel: 3
+taxonomies:
+  tag: tags
 ignoreFiles:
   - \.Rmd$
   - \.Rmarkdown$
@@ -20,17 +52,45 @@ menu:
       url: https://github.com/swsoyee
     - name: Twitter
       url: https://twitter.com/swsoyee
+  nav:
+    - name: Home
+      url: /
+      weight: 1
+    - name: About
+      url: /about/
+      weight: 2
+    - name: RSS
+      url: /index.xml
+      weight: 3
+  link:
+    - name: GitHub
+      url: 'https://github.com/swsoyee'
+      weight: 1
+    - name: Twitter
+      url: 'https://twitter.com/swsoyee'
+      weight: 2
 params:
+  author: Su Wei
+  subTitle: My blog record everything.
+  sourceURL: 'https://github.com/swsoyee/swsoyee'
+  showWordCounter: true
+  showReadTime: true
+  showLicenseInFooter: true
+  showLicense: true
+  showToc: true
+  copyrightStartYear: '2018'
+  description: A minimal Hugo theme with nice theme color.
+  og: /img/og.png
+  mainSections:
+    - post
+  license: CC BY-NC-SA 4.0
+  licenseLink: 'http://creativecommons.org/licenses/by-nc-sa/4.0/'
+  lazyPlaceholder: /assets/lazyload/dsrca_loading_480x270.svg
+  lazyPlaceholderRow: /assets/lazyload/dsrca_loading_960x270.svg
+  lazyPlaceholderCol: /assets/lazyload/dsrca_loading_480x540.svg
   MathJaxCDN: //cdnjs.cloudflare.com/ajax/libs
   MathJaxVersion: 2.7.5
-  description: A website built through Hugo and blogdown.
   favicon: favicon.ico
-  highlightjsCDN: //cdnjs.cloudflare.com/ajax/libs
-  highlightjsLang:
-    - r
-    - yaml
-  highlightjsTheme: github
-  highlightjsVersion: 9.12.0
   logo:
     alt: Logo
     height: 50
