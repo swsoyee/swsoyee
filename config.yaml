@@ -76,8 +76,8 @@ params:
   showWordCounter: true
   showReadTime: true
   showLicenseInFooter: true
-  showLicense: true
-  showToc: true
+  showLicense: false
+  showToc: false
   copyrightStartYear: '2018'
   description: A minimal Hugo theme with nice theme color.
   og: /img/og.png
