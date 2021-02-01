@@ -1,8 +1,8 @@
 baseurl: /
 languageCode: en-us
-title: A Hugo website
+title: Infinity Loop
 theme: "hugo-theme-fuji"
-googleAnalytics: ''
+googleAnalytics: 'UA-131217026-1'
 disqusShortname: ''
 ignoreFiles:
   - \.Rmd$
@@ -17,9 +17,9 @@ menu:
     - name: About
       url: /about/
     - name: GitHub
-      url: https://github.com/rstudio/blogdown
+      url: https://github.com/swsoyee
     - name: Twitter
-      url: https://twitter.com/rstudio
+      url: https://twitter.com/swsoyee
 params:
   MathJaxCDN: //cdnjs.cloudflare.com/ajax/libs
   MathJaxVersion: 2.7.5
