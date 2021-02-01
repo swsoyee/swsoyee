@@ -2,7 +2,7 @@
 title: Calculate Estimated R in Japan
 author: Su Wei
 date: '2021-02-01'
-slug: test
+slug: calculate-estimated-r-in-japan
 categories: [program]
 tags: [r,echarts,covid19]
 ---
