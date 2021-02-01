@@ -1,0 +1,148 @@
+---
+title: Calculate Estimated R in Japan
+author: Su Wei
+date: '2021-02-01'
+slug: test
+categories: [program]
+tags: [r,echarts,covid19]
+---
+
+## Install Packages
+
+```{r install pacakge, eval=FALSE}
+install.packages("incidence")
+install.packages("EpiEstim")
+install.packages("remotes")
+install.packages("data.table")
+install.packages("echarts4r")
+```
+
+## Create the Plot
+
+```{r calculate Rt}
+# Load packages
+library(echarts4r)
+library(incidence)
+library(EpiEstim)
+library(data.table)
+
+# Dataset and parameters
+byDate <-
+  fread(
+    "https://raw.githubusercontent.com/swsoyee/2019-ncov-japan/master/50_Data/byDate.csv"
+  )
+byDate[is.na(byDate)] <- 0
+
+# Refer to https://www.ijidonline.com/article/S1201-9712(20)30119-3/fulltext
+mean_si <- 4.6
+std_si <- 2.6
+
+pref <- colnames(byDate)[2:48]
+output_list <- list()
+
+# Create estimate R dataset
+createEstimateFromSource <- function(dataset, pref) {
+  incid <-
+    as.incidence(
+      rowSums(dataset[, pref, with = FALSE]),
+      dates = as.Date(as.character(dataset$date), format = "%Y%m%d")
+    )
+
+  res <- suppressMessages(suppressWarnings(
+    estimate_R(incid,
+      method = "parametric_si",
+      config = make_config(list(
+        mean_si = mean_si,
+        std_si = std_si,
+        t_end = max(incid$dates)
+      ))
+    )
+  ))
+  dt <- as.data.table(res$R)
+  cols <- colnames(dt)
+  dt[, (cols) := lapply(.SD, function(x) {
+    return(round(x, 2))
+  }), .SDcols = cols]
+
+  dt$dates <- res$dates[res$R$t_end]
+  dt$Incidence <- res$I[res$R$t_end]
+
+  dt
+}
+
+createRtLineFromEstimate <- function(dataset, pref) {
+  dataset %>%
+    e_chart(dates, height = "250px") %>%
+    e_line(
+      serie = `Mean(R)`,
+      symbolSize = 0,
+      name = "Rt"
+    ) %>%
+    e_bar(
+      serie = Incidence,
+      y_index = 1,
+      barCategoryGap = "10%",
+      name = "Incidence"
+    ) %>%
+    e_band(
+      min = `Quantile.0.05(R)`,
+      max = `Quantile.0.95(R)`
+    ) %>%
+    e_tooltip(trigger = "axis") %>%
+    e_datazoom(
+      minValueSpan = 28,
+      startValue = (max(dt$dates, na.rm = T) - 90)
+    ) %>%
+    e_legend(top = "10%") %>%
+    e_y_axis(
+      name = "Rt",
+      nameLocation = "middle",
+      splitLine =
+        list(lineStyle = list(opacity = 0.4)),
+      z = 999,
+      axisLabel = list(inside = T),
+      axisTick = list(show = F)
+    ) %>%
+    e_y_axis(
+      name = "Incidence",
+      nameGap = 10,
+      splitLine = list(show = F),
+      z = 999,
+      index = 1,
+      axisTick = list(show = F)
+    ) %>%
+    e_mark_line(
+      data = list(yAxis = 1),
+      symbolSize = 0,
+      label = list(show = FALSE)
+    ) %>%
+    e_grid(
+      left = "8%",
+      right = "15%"
+    ) %>%
+    e_title(
+      text = sprintf(
+        "%s - Rt: %s±%s（%s）",
+        pref,
+        tail(dataset$`Mean(R)`, 1)[[1]],
+        tail(dataset$`Std(R)`, 1)[[1]],
+        tail(dataset$dates, 1)[[1]]
+      ),
+      subtext = sprintf(
+        "Serial interval: %s±%s",
+        mean_si, std_si
+      )
+    )
+}
+
+# Generate each prefectures Rt line via loop
+for (selectedPref in pref) {
+  dataset <- createEstimateFromSource(byDate, selectedPref)
+
+  e <- createRtLineFromEstimate(dataset, selectedPref)
+
+  output_list <- c(output_list, list(e))
+}
+
+e_arrange(output_list)
+```
