@@ -1,0 +1,5 @@
+{{- if len .Params | eq 2 -}}
+<p>
+  <img src="{{ index .Params 1 | relURL | safeURL }}" alt="{{ index .Params 0 }}" />
+</p>
+{{- end -}}

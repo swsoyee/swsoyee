@@ -1,0 +1,53 @@
+[sidebarToc]
+    other = "目次"
+
+[sidebarPages]
+    other = "ページ"
+
+[sidebarTags]
+    other = "タグ"
+
+[sidebarLinks]
+    other = "リンク"
+
+[sidebarBangumiChart]
+    other = "番組"
+
+[footerPoweredFront]
+    other = "Powered by "
+
+[footerPoweredEnd]
+    other = " "
+
+[postMetaNoTag]
+    other = "タグはありません"
+
+[postMetaWordCount]
+    other = "{{.Count}} 字"
+
+[postMetaReadingTime]
+    other = "{{.Count}} 分"
+
+[postCopyrightFront]
+    other = "特定のセクションを除いて、このサイトは "
+
+[postCopyrightEnd]
+    other = " の下に提供されています。"
+
+[postComment]
+    other = "コメントを表示"
+
+[archivesTotalPages]
+    other = "総記事数："
+
+[tagsCurrentTag]
+    other = "タグ {{ .Title }} を持つ記事："
+
+[searchSuccess]
+    other = "[NUM] 件 ([TIME] ミリ秒)"
+
+[searchNotFound]
+    other = "検索できませんでした"
+
+[searchFailed]
+    other = "インデックスを取得できません"

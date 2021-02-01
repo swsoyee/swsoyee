@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Lang }}">
+
+<head>
+    {{ partial "head.html" . }}
+</head>
+
+<body data-theme="auto">
+    {{ partial "scripts-front.html" . }}
+    {{ partial "header.html" . }}
+
+    <main>
+        <div class="container-lg clearfix">
+            <!-- list -->
+            <div class="col-12 col-md-9 float-left content">
+                {{ block "main" . }}{{ end }}
+            </div>
+            {{ partial "sidebar.html" . }}
+        </div>
+        {{ partial "components.html" . }}
+    </main>
+
+    {{ partial "footer.html" . }}
+    {{ partial "scripts-end.html" . }}
+</body>
+
+</html>
