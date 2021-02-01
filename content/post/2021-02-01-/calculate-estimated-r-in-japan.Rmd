@@ -14,7 +14,7 @@ install.packages("incidence")
 install.packages("EpiEstim")
 install.packages("remotes")
 install.packages("data.table")
-install.packages("echarts4r")
+remotes::install_github("JohnCoene/echarts4r")
 ```
 
 ## Create the Plot
@@ -91,7 +91,7 @@ createRtLineFromEstimate <- function(dataset, pref) {
     e_tooltip(trigger = "axis") %>%
     e_datazoom(
       minValueSpan = 28,
-      startValue = (max(dt$dates, na.rm = T) - 90)
+      startValue = (max(dataset$dates, na.rm = T) - 90)
     ) %>%
     e_legend(top = "10%") %>%
     e_y_axis(
