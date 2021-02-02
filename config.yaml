@@ -1,98 +1,97 @@
-baseurl: /
+baseURL: /
 languageCode: en-us
+defaultContentLanguage: en-us
 title: Infinity Loop
-theme: "hugo-theme-fuji"
+theme: hugo-tranquilpeak-theme
+disqusShortname: hugo-tranquilpeak-theme
 googleAnalytics: 'UA-131217026-1'
-disqusShortname: ''
-hasCJKLanguage: true
-enableEmoji: true
-enableRobotsTXT: true
-disableKinds:
-  - taxonomy
-ignoreErrors:
-  - error-disable-taxonomy
-defaultContentLanguage: en
-summaryLength: 80
-paginate: 10
-outputFormats:
-  SearchIndex:
-    isPlainText: true
-    notAlternative: true
-    mediaType: application/json
-    path: /search/
-outputs:
-  home:
-    - HTML
-    - RSS
-    - SearchIndex
-markup:
-  goldmark:
-    renderer:
-      unsafe: true
-  highlight:
-    codeFences: false
-  tableOfContents:
-    startLevel: 2
-    endLevel: 3
+paginate: 7
+canonifyurls: true
+permalinks:
+  post: '/:year/:month/:slug/'
 taxonomies:
   tag: tags
-ignoreFiles:
-  - \.Rmd$
-  - \.Rmarkdown$
-  - _cache$
-  - \.knit\.md$
-  - \.utf8\.md$
-permalinks:
-  post: /:year/:month/:day/:slug/
+  category: categories
+  archive: archives
+author:
+  name: Su Wei
+  bio: Opportunity favors only the prepared mind.
+  job: Front-end Engineer
+  location: Tokyo, Japan
+  gravatarEmail: swsoyee@gmail.com
+  picture: >-
+    https://avatars.githubusercontent.com/u/20528423?s=400&u=eea6338366ca658d42633d3c1bb5ea44180f2893&v=4
+  twitter: "swsoyee"
 menu:
   main:
-    - name: About
-      url: /about/
-    - name: GitHub
-      url: https://github.com/swsoyee
-    - name: Twitter
-      url: https://twitter.com/swsoyee
-  nav:
-    - name: Home
+    - weight: 1
+      identifier: home
+      name: Home
+      pre: <i class="sidebar-button-icon fa fa-lg fa-home"></i>
       url: /
-      weight: 1
-    - name: About
-      url: /about/
-      weight: 2
-    - name: RSS
-      url: /index.xml
-      weight: 3
-  link:
-    - name: GitHub
+    - weight: 2
+      identifier: categories
+      name: Categories
+      pre: <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      url: /categories
+    - weight: 3
+      identifier: tags
+      name: Tags
+      pre: <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      url: /tags
+    - weight: 4
+      identifier: archives
+      name: Archives
+      pre: <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      url: /archives
+    - weight: 5
+      identifier: about
+      name: About
+      pre: <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      url: /#about
+  links:
+    - weight: 1
+      identifier: github
+      name: GitHub
+      pre: <i class="sidebar-button-icon fa fa-lg fa-github"></i>
       url: 'https://github.com/swsoyee'
-      weight: 1
-    - name: Twitter
+    - weight: 2
+      identifier: twitter
+      name: Twitter
+      pre: <i class="sidebar-button-icon fa fa-lg fa-twitter"></i>
       url: 'https://twitter.com/swsoyee'
-      weight: 2
+  misc:
+    - weight: 1
+      identifier: rss
+      name: RSS
+      pre: <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      url: /index.xml
 params:
-  author: Su Wei
-  subTitle: My blog record everything.
-  sourceURL: 'https://github.com/swsoyee/swsoyee'
-  showWordCounter: true
-  showReadTime: true
-  showLicenseInFooter: true
-  showLicense: false
-  showToc: false
-  copyrightStartYear: '2018'
-  description: A minimal Hugo theme with nice theme color.
-  og: /img/og.png
-  mainSections:
-    - post
-  license: CC BY-NC-SA 4.0
-  licenseLink: 'http://creativecommons.org/licenses/by-nc-sa/4.0/'
-  lazyPlaceholder: /assets/lazyload/dsrca_loading_480x270.svg
-  lazyPlaceholderRow: /assets/lazyload/dsrca_loading_960x270.svg
-  lazyPlaceholderCol: /assets/lazyload/dsrca_loading_480x540.svg
-  MathJaxCDN: //cdnjs.cloudflare.com/ajax/libs
-  MathJaxVersion: 2.7.5
-  favicon: favicon.ico
-  logo:
-    alt: Logo
-    height: 50
-    url: logo.png
-    width: 50
+  dateFormat: '2006 January 2'
+  syntaxHighlighter: highlight.js
+  clearReading: true
+  hierarchicalCategories: true
+  description: Infinity Loop's blog
+  sidebarBehavior: 2
+  coverImage: images/cover.jpg
+  imageGallery: true
+  thumbnailImage: true
+  thumbnailImagePosition: bottom
+  autoThumbnailImage: true
+  sharingOptions:
+    - name: Facebook
+      icon: fa-facebook-official
+      url: 'https://www.facebook.com/sharer/sharer.php?u=%s'
+    - name: Twitter
+      icon: fa-twitter
+      url: 'https://twitter.com/intent/tweet?text=%s'
+    - name: Google+
+      icon: fa-google-plus
+      url: 'https://plus.google.com/share?url=%s'
+  header:
+    rightLink:
+      class: ''
+      icon: ''
+      url: /#about
+  footer:
+    copyright: "<a href=\"https://github.com/swsoyee\">Su Wei</a>"
