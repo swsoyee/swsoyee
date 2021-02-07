@@ -19,7 +19,7 @@ tags: [chinese,r,develop,visulization]
 
 ## 2. 适用场景
 
-诚然，`{r3dmol}` 只是一个较为轻量的处于初级开发阶段的可视化包，并没有`PyMOL` 等专业软件这么丰富的功能，而且 `3Dmol.js` 本身开发时间时间较早，受其所限导致绘制的模型看起来精致度有所欠缺。
+诚然，`{r3dmol}` 只是一个较为轻量的处于初级开发阶段的可视化包，并没有`PyMOL` 等专业软件这么丰富的功能，而且 `3Dmol.js` 本身开发时间时间较早，受其所限导致绘制的结构看起来精致度有所欠缺。
 但如果你有下列需求的话，我想 `{r3dmol}` 应该是一个不错的选择。
 
 1. 使用 R 语言进行分子、蛋白质的分析（如[`{bio3d}`](http://thegrantlab.org/bio3d/)），需要在结果报告中展示3D结构（来显得报告更专业）；
@@ -94,3 +94,161 @@ r3dmol(
   # 旋转动画
   m_spin() 
 ```
+
+## 4.2 化学分子
+
+对于化学分子也可以使用 `{r3dmol}` 进行可视化。`m_add_model()` 对于模型只需要提供纯文本的结构文件和指定文件格式即可添加模型。
+这里我们使用苯环作为示范：
+
+```{r benz}
+benz <- "
+     RDKit          3D
+
+  6  6  0  0  0  0  0  0  0  0999 V2000
+   -0.9517    0.7811   -0.6622 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.2847    1.3329   -0.3121 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.2365    0.5518    0.3512 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.9517   -0.7811    0.6644 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.2847   -1.3329    0.3144 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.2365   -0.5518   -0.3489 C   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  2  0
+  2  3  1  0
+  3  4  2  0
+  4  5  1  0
+  5  6  2  0
+  6  1  1  0
+M  END
+$$$$"
+
+r3dmol(id = "demo_sdf", elementId = "demo_sdf") %>%
+  m_add_model(data = benz, format = "sdf") %>%
+  m_set_style(style = m_style_stick()) %>%
+  m_set_style(sel = m_sel(model = 0), 
+              style = m_style_stick(colorScheme = "cyanCarbon")) %>%
+  m_zoom_to()
+```
+
+## 4.3 利用 JavaScript 函数进行高自由度可视化
+
+如果对 JavaScript 有所了解的话，还可以自己定制一些函数进行特殊的高自由度的可视化。
+下面的这个例子使用内置的 `1J72` 蛋白展示了如何将处于偶数位置的设置成白色，奇数位置设置为绿色：
+
+```{r dynamic color}
+r3dmol() %>%
+  m_add_model(data = pdb_1j72) %>%
+  m_set_style(style = m_style_cartoon(
+      colorfunc = "
+        function(atom) {
+          return atom.resi % 2 == 0 ? 'white' : 'green';
+        }"
+    )
+  ) %>%
+  m_zoom_to()
+```
+
+## 4.4 分子选择
+
+类似 `PyMol`，`{r3dmol}` 也支持对个别成员（如残基名字、残基位置、肽链、模型、元素和原子等）进行选择，使用不同的样式或者是进行标记等操作。
+详细可参考函数帮助或者[在线文档](https://swsoyee.github.io/r3dmol/articles/style-functions.html#using-selections-1)。
+
+下面的例子展示了选择 A 链并将头 10 个残基设置为球棍模型的写法：
+
+```{r m_sel}
+r3dmol() %>%
+  m_add_model(data = pdb_6zsl) %>%
+  m_set_style(style = m_style_cartoon()) %>%
+  m_add_style(
+    style = c(
+      m_style_stick(),            # 棍样式
+      m_style_sphere(scale = 0.5) # 球样式
+    ),
+    sel = m_sel(
+      resi = 1:10,                # 头1到10个残基
+      chain = "A",                # A链
+    )
+  ) %>%
+  m_zoom_to(                      # 缩放到
+    sel = m_sel(
+      resi = 1:10,                # 头1到10个残基                
+      chain = "A"                 # A链
+    )
+  )
+```
+
+在上面这个例子中，我们在选择 `r resi = 1:10` 的时候指定了是在A链上的头10个残基。
+但如果在用 `m_sel()` 进行选择的时候没有指定哪一条链时，将会自动选择所有链的头10个残基，并取他们的空间中点作为选择点。
+比如下面的例子中，我们在添加标签时候没有指定链，因此将会在两条链的中心点出现标签。
+
+```{r label}
+r3dmol() %>%
+  m_add_model(data = pdb_6zsl) %>%
+  m_set_style(style = m_style_cartoon()) %>%
+  m_add_style(
+    sel = m_sel(resi = 1:10),
+    style = c(
+      m_style_stick(),
+      m_style_sphere(scale = 0.5)
+    )
+  ) %>%
+  m_add_line(
+    start = m_sel(
+      resi = 1:10,
+      chain = "A"
+    ),
+    end = m_sel(
+      resi = 1:10,
+      chain = "B"
+    ),
+    spec = list(dashed = TRUE)
+  ) %>%
+  m_add_label(
+    text = "所选范围的空间中心",
+    sel = m_sel(
+      resi = 1:10 # 这里只选择了残基位置而没有指定链
+    ),
+    style = m_style_label(
+      borderColor = "green",
+      borderThickness = 1,
+      inFront = FALSE
+    )
+  ) %>%
+  m_zoom_to()
+```
+
+## 4.5 读取结构
+
+在上面的例子中，展示的都是使用包中包含的默认结构或者直接字符串形式进行传入的。
+从 0.1.1 版本开始，对于蛋白质来说，可以使用 `m_fetch_pdb()` 直接从 PDB 获取，或者是用 `m_bio3d()` 来读取 `{bio3d}` 中的结构数据。
+
+直接从 PDB 获取 `1BNA`：
+
+```{r m_fetch_pdb}
+r3dmol() %>% 
+  m_add_model(data = m_fetch_pdb("1bna", save.pdb = FALSE)) %>% 
+  m_set_style(style = m_style_cartoon()) %>% 
+  m_zoom_to()
+```
+
+读取 `{bio3d}` 中的结构数据：
+
+```{r from bio3d}
+# install.packages("bio3d")
+library(bio3d)
+
+pdb <- read.pdb("1bna")
+
+r3dmol() %>%
+  m_add_model(data = m_bio3d(pdb)) %>%
+  m_set_style(style = m_style_cartoon()) %>%
+  m_zoom_to() %>%
+  m_rotate(angle = "90", axis = "x") %>%
+  m_spin(axis = "z")
+```
+
+## 5. 结语
+
+虽然开发出了这个分子结构可视化的包，但由于本人对结构生物学一窍不通，也不再是生物科研人员，自然而然不是这个包的目标用户。
+因此有这方面需求的读者可以尝试一下，提出宝贵的体验反馈和改进意见。
+[`{r3dmol}`](https://swsoyee.github.io/r3dmol/index.html) 的源码放置在 [Github](https://github.com/swsoyee/r3dmol/)，
+无限欢迎提交 Issue 和 PR，或是分享你的 `{r3dmol}` 使用体验和所绘制的成果。
+如果你觉得该包有帮助到你的日常科研生活，可在 Github 上点个 Star 表示对这项工作的支持哦 :)
