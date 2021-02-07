@@ -1,0 +1,96 @@
+---
+title: "在R中对分子结构进行3D可视化"
+author: "Su Wei"
+date: "2021-02-07"
+output:
+  blogdown::html_page:
+    toc: true
+categories: [program]
+tags: [chinese,r,develop,visulization]
+---
+
+## 1. 前言
+
+本文主要介绍一下自己利用业余时间开发的分子结构3D可视化R包 [`{r3dmol}`](https://github.com/swsoyee/r3dmol)。  
+`{r3dmol}` 基于一个老牌的 JavaScript 的3D分子结构可视化库 [`3Dmol.js`](https://3dmol.csb.pitt.edu/) 和 [`{htmlwidgets}`](https://www.htmlwidgets.org/) 开发而成。
+`3Dmol.js` 有 Python 版本的接口，可以在 Jupyter Notebook 中使用，但是却没有 R 语言能用的版本，也就无法很方便地在 Rmarkdown 和 Shiny 中使用。
+虽然也不是不能通过直接调用 JavaScript 来进行实现，但对于一般专注科研的学者来说，似乎也没有必要花额外的精力去研究一大堆 JavaScript 的写法来达到目的。  
+因此，我利用 `3Dmol.js` 和 `{htmlwidgets}` 开发了 `{r3dmol}` 这个 R 包，以方便日常用 R 进行分析的科研人员实现在分析文档中对分子、蛋白质结构进行可视化，免去了打开 `PyMOL` 等软件对结构进行绘制后在通过导出图片复制粘贴到文档中的繁琐操作。
+
+## 2. 适用场景
+
+诚然，`{r3dmol}` 只是一个较为轻量的处于初级开发阶段的可视化包，并没有`PyMOL` 等专业软件这么丰富的功能，而且 `3Dmol.js` 本身开发时间时间较早，受其所限导致绘制的模型看起来精致度有所欠缺。
+但如果你有下列需求的话，我想 `{r3dmol}` 应该是一个不错的选择。
+
+1. 使用 R 语言进行分子、蛋白质的分析（如[`{bio3d}`](http://thegrantlab.org/bio3d/)），需要在结果报告中展示3D结构（来显得报告更专业）；
+2. 需要在 `{rmarkdown}`、`{shiny}` 或者 `{blogdown}` 等 R 语言生态环境中进行结构可视化；
+3. 各类生物信息课程中的教学需求；
+
+如果是需要导出最终发表文章那类高质量结构图的话，可能用业界老朋友 `PyMOL`，或者干脆上 [`blender`](https://www.blender.org/)会显得更为专业。
+不过众所周知，这二者也是有一定的学习门槛，制作上也需要花费不少时间，因此也和 `{r3dmol}` 定位完全没有重叠，按需使用就好。
+
+## 3. 安装方法
+
+[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/r3dmol)](https://cran.r-project.org/package=r3dmol)
+可以直接安装 CRAN 上的版本：
+```{r install, eval=FALSE}
+install.packages("r3dmol")
+```
+
+由于 CRAN 上的版本更新手续较为繁琐，也不能频繁更新，因此如果你想体验最新开发版本（可能包括一些 Bug 修复等），也可以通过 Github 安装开发版：
+
+```{r install from github, eval=FALSE}
+# install.packages("devtools")
+devtools::install_github("swsoyee/r3dmol")
+```
+
+## 4. 使用方法
+
+## 4.1 显示结构
+
+如果对 `{ggplot2}` 或者 `{dplyr}` 等常用包的写法不陌生的话，你会发现上手起来非常简单。
+一个简单的例子，让我们先来对包中自带的 `6ZSL` 蛋白进行可视化：
+
+```{r demo}
+library(r3dmol)
+r3dmol() %>%
+  m_add_model(data = pdb_6zsl, format = "pdb") %>%
+  m_zoom_to() %>%
+  m_set_style(style = m_style_cartoon(color = 'spectrum'))
+```
+
+- `r3dmol()`：初始化可视化的框架；
+- `m_add_model()`：添加模型；
+- `m_zoom_to()`：将模型完全缩放到正中间；
+- `m_set_style()`：将样式设置为 `Cartoon` 并且颜色为 `spectrum`.
+
+仅仅数行就能将一个结构显示到文档中了。
+
+再来看一个官方文档中提供的复杂一点设置的例子：
+
+```{r another demo}
+# 设定窗口样式
+r3dmol(
+  viewer_spec = m_viewer_spec(
+    cartoonQuality = 10, # 图形质量
+    lowerZoomLimit = 50, # 缩放下限
+    upperZoomLimit = 350 # 缩放上限
+  )
+) %>%
+  # 添加模型
+  m_add_model(data = pdb_6zsl, format = "pdb") %>%  
+  # 模型缩放到整体
+  m_zoom_to() %>%
+  # 设置 Cartoon 样式，并且颜色为绿色
+  m_set_style(style = m_style_cartoon(color = '#00cc96')) %>% 
+  # 设置 beta-折叠为蓝紫色
+  m_set_style(sel = m_sel(ss = 's'),                 
+              style = m_style_cartoon(color = '#636efa', arrows = TRUE)) %>% 
+  # 设置 alpha-螺旋为橙色
+  m_set_style(sel = m_sel(ss = 'h'),
+              style = m_style_cartoon(color = '#ff7f0e')) %>%
+  # 初始角度按Y轴旋转90度
+  m_rotate(angle = 90, axis = 'y') %>%
+  # 旋转动画
+  m_spin() 
+```
