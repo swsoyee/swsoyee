@@ -6,8 +6,9 @@ slug: calculate-estimated-r-in-japan
 output:
   blogdown::html_page:
     toc: true
-categories: [program]
-tags: [english,r,echarts,covid19]
+categories: [English]
+tags: [r,echarts,covid19]
+summary: 'In this article, I will show how to plot an interactive effective reproduction number line plot using R and `{echarts4r}`. However, since I do not know any epidemic theory, I will not explain too much about the model. The same code also been used in [COVID-19 BULLETIN BOARD](https://covid-2019.live/en).'
 ---
 
 In this article, I will show how to plot an interactive effective reproduction number line plot using R and `{echarts4r}`. However, since I do not know any epidemic theory, I will not explain too much about the model.
