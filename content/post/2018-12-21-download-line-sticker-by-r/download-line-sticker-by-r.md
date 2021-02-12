@@ -7,6 +7,8 @@ output:
     toc: true
 categories: [中文]
 tags: [r]
+thumbnailImage: https://s1.ax1x.com/2018/12/22/FyZVOO.png
+thumbnailImagePosition: right
 summary: '出于练习用R对于网页素材的解析，并且写一些有意思并且实用的脚本，就尝试着结合Windows下的bat可执行文件捣鼓了这么一个东西。'
 ---
 

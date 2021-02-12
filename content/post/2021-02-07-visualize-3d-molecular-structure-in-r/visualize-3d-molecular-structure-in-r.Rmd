@@ -7,6 +7,8 @@ output:
     toc: true
 categories: [中文]
 tags: [r,develop,visulization]
+thumbnailImage: 'https://s3.ax1x.com/2021/02/12/yriGqO.md.png'
+thumbnailImagePosition: right
 summary: '本文主要介绍一下自己利用业余时间开发的分子结构3D可视化R包 [`{r3dmol}`](https://github.com/swsoyee/r3dmol)。`{r3dmol}` 基于一个老牌的 JavaScript 的3D分子结构可视化库 [`3Dmol.js`](https://3dmol.csb.pitt.edu/) 和 [`{htmlwidgets}`](https://www.htmlwidgets.org/) 开发而成。利用 `3Dmol.js` 和 `{htmlwidgets}` 开发了 `{r3dmol}` 这个 R 包，以方便日常用 R 进行分析的科研人员实现在分析文档中对分子、蛋白质结构进行可视化，免去了打开 `PyMOL` 等软件对结构进行绘制后在通过导出图片复制粘贴到文档中的繁琐操作。'
 ---
 
