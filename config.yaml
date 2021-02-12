@@ -3,7 +3,6 @@ languageCode: en-us
 defaultContentLanguage: en-us
 title: Infinity Loop
 theme: hugo-tranquilpeak-theme
-disqusShortname: hugo-tranquilpeak-theme
 googleAnalytics: 'UA-131217026-1'
 disqusShortname: 'infinityloop-netlify-app'
 paginate: 7
