@@ -5,6 +5,7 @@ title: Infinity Loop
 theme: hugo-tranquilpeak-theme
 disqusShortname: hugo-tranquilpeak-theme
 googleAnalytics: 'UA-131217026-1'
+disqusShortname: 'infinityloop-netlify-app'
 paginate: 7
 canonifyurls: true
 permalinks:
@@ -18,9 +19,7 @@ author:
   bio: Opportunity favors only the prepared mind.
   job: Front-end Engineer
   location: Tokyo, Japan
-  gravatarEmail: swsoyee@gmail.com
-  picture: >-
-    https://avatars.githubusercontent.com/u/20528423?s=400&u=eea6338366ca658d42633d3c1bb5ea44180f2893&v=4
+  picture: https://s3.ax1x.com/2021/02/12/yrPJ4s.jpg
   twitter: "swsoyee"
 menu:
   main:
@@ -69,11 +68,11 @@ menu:
 params:
   dateFormat: '2006 January 2'
   syntaxHighlighter: highlight.js
-  clearReading: true
+  clearReading: false
   hierarchicalCategories: true
   description: Infinity Loop's blog
   sidebarBehavior: 2
-  coverImage: images/cover.jpg
+  coverImage: https://s3.ax1x.com/2021/02/12/yrPfKK.jpg
   imageGallery: true
   thumbnailImage: true
   thumbnailImagePosition: bottom
