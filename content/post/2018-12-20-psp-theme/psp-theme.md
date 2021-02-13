@@ -2,9 +2,6 @@
 title: PSP个人制作主题汇总
 date: '2018-12-20'
 slug: psp-theme
-output:
-  blogdown::html_page:
-    toc: true
 categories: [中文]
 tags: [design]
 ---
