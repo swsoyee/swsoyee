@@ -3,6 +3,7 @@ title: "用“专业”的方式创建和开发你的 R 包"
 author: "Su Wei"
 date: "2021-02-15"
 categories: [中文]
+slug: create-r-package-in-a-professional-way
 output:
   blogdown::html_page:
     toc: true

@@ -6,6 +6,7 @@ output:
   blogdown::html_page:
     toc: true
 categories: [中文]
+slug: visualize-3d-molecular-structure-in-r
 tags: [r,develop,visulization]
 thumbnailImage: 'https://s3.ax1x.com/2021/02/12/yriGqO.md.png'
 thumbnailImagePosition: right
