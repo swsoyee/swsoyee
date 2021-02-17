@@ -533,7 +533,7 @@ usethis::use_tidy_github_actions()
 ✓ Writing '.github/workflows/R-CMD-check.yaml'
 ✓ Adding R-CMD-check badge to 'README.Rmd'
 ● Re-knit 'README.Rmd'
-✓ Writing '.github/workflows/pr-comhttps://raw.githubusercontent.com/swsoyee/rPackageTutorial/main/mands.yaml'
+✓ Writing '.github/workflows/pr-commands.yaml'
 ✓ Writing '.github/workflows/pkgdown.yaml'
 ✓ Writing '.github/workflows/test-coverage.yaml'
 ```
