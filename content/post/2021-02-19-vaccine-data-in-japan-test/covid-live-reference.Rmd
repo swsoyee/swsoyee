@@ -1,0 +1,129 @@
+---
+title: "コロナワクチンのデータを R で可視化する"
+date: "2021-02-19"
+categories: [日本語]
+slug: vaccine-data-in-japan
+output:
+  blogdown::html_page:
+    toc: true
+tags: [r,echarts,covid19]
+summary: '厚生労働省がページに掲載している「新型コロナワクチンの接種実績」を R で直接に取得して可視化する方法を紹介します。'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+この記事には、自分が開発した「新型コロナウイルス感染速報」を紹介している資料達のまとめです。自分が把握している限りの全てではないですが、「感染速報」が皆さんに信頼されていることを示されています。ツイター上に `covid-2019.live` でエゴサーチすればもっと出てくると思います。
+
+```{r pv, echo=FALSE}
+suppressMessages({
+  library(echarts4r)
+  library(purrr)
+  library(data.table)
+})
+
+url <- "https://cdn.covid-2019.live/static/stats.json"
+
+result <- jsonlite::read_json(url)
+
+pv <- data.table(
+  date = as.Date(unlist(result$result$timeseries %>% map("since"))),
+  pv = unlist(result$result$timeseries %>% map("pageviews") %>% map("all")),
+  uv = unlist(result$result$timeseries %>% map("uniques") %>% map("all"))
+)
+pv %>%
+  e_chart(date) %>%
+  e_line(
+    pv,
+    name = "Page Views",
+    symbolSize = 0
+  ) %>%
+  e_line(
+    uv,
+    name = "Unique Users",
+    y_index = 1,
+    symbolSize = 0
+  ) %>%
+  e_x_axis(
+    splitLine = list(
+      lineStyle = list(
+        opacity = 0.2
+      )
+    )
+  ) %>%
+  e_title(
+    text = sprintf(
+      "Traffics of covid-2019.live（until: %s）",
+      max(pv$date)
+    ),
+    subtext = sprintf(
+      "Total Page Views: %s\nTotal Unique Users: %s",
+      sum(pv$pv),
+      sum(pv$uv)
+    )
+  ) %>%
+  e_legend(
+    show = TRUE,
+    top = "15%",
+    left = "20%",
+  ) %>%
+  e_grid(top = "15%") %>%
+  e_tooltip(trigger = "axis")
+```
+
+## 1. 組織
+
+1. ジャパン通信社：[第1弾【新型コロナウイルス –COVID-19 に関する情報サイトまとめ 国内編 その1】](https://www.japan-tsushin.co.jp/news/?p=165)
+
+    > ■日本国内の感染状況について詳細なデータを多彩なチャートやグラフなどを駆使して表示
+
+2. 日本医師会：[新型コロナウイルス感染症 > 医療機関用資料等 > 新型コロナウイルス感染症外来診療ガイド－役立つリンク集【日本医師会】](https://www.med.or.jp/dl-med/kansen/novel_corona/link/yakulink.pdf)
+
+    > ●その他  
+    > 新型コロナウイルス感染速報（日本国内の発生状況をリアルタイムに発信）  
+    > https://covid-2019.live/  
+
+3. 鳥取大学：[〔鳥取大学 鳥取地区〕　新型コロナウイルス感染症拡大防止のための「学生課外活動指針」](https://www.tottori-u.ac.jp/secure/17792/kagai-sisin210119.pdf)
+
+    > 緊急事態宣言発令地域への移動は原則禁止とする。また感染発生地域については、新型コロナウイルス感染速報（https://covid-2019.live/） 等を参照し、状況によっては活動を自粛すること
+    
+4. 国立病院機構 三重病院：[三重病院ニュースレター > 緊急事態宣言解除後の生活 第25回](https://mie.hosp.go.jp/common/letter/nl_2006_02.pdf)
+
+5. みずほ総合研究所：
+    - [1 都 3 県における緊急事態宣言の影響シミュレーション](https://www.mizuho-ri.co.jp/publication/research/pdf/insight/jp210108.pdf)
+    - [都道府県別の感染サイクル（～7/30）](http://www.pref.osaka.lg.jp/attach/1949/00004348/02.pdf)、[日本の都道府県別感染サイクル（～8/26）](https://orgwww2.bousai.metro.tokyo.lg.jp/_res/projects/default_project/_page_/001/011/782/20200827/20200827siryou.pdf)
+  
+6. みなみかしわ駅ノ歯科：[Covid-19感染防止プロトコル](https://minamikashiwa-shika.com/covid19.html)
+
+7. 磐田市立総合病院：[新型コロナウイルス感染症](https://www.hospital.iwata.shizuoka.jp/feature/public-lectures/upload/20201224-175733-4953.pdf)
+
+8. 産業医学推進研究会：[COVID-19対応状況調査（2020年5月実施分）](http://www.sansuiken.org/support/200605%20COVID-19_SSK_3rd_open_forHP.pdf)
+
+9. NHK 福岡局：
+    - 2020年5月22日『実感ドドド！』「新型コロナ　見てきた教訓と九州沖縄のこれから」
+    - 2020年6月9日『ロクいち！福岡』「経路不明者を突き止めろ」
+
+## 2. 個人
+
+1. [山中伸弥による新型コロナウイルス情報発信](https://covid19-yamanaka.com/) > [データから学ぶ > 日本の状況](https://covid19-yamanaka.com/cont3/16.html)
+
+    > **都道府県別の検査数、感染者数**  
+    > 開発者がどなたかはわからないのですが、非常に有用なためリンクさせて頂きました  
+    > https://covid-2019.live/
+
+2. 忽那賢志（感染症専門医）：[症状、予防、経過と治療…　新型コロナウイルス感染症とは？　現時点で分かっていること（6月27日時点）](https://news.yahoo.co.jp/byline/kutsunasatoshi/20200627-00185362/)
+
+3. 中川徹（大阪学院大学　名誉教授）：[新型コロナウイルス感染症(COVID-19)パンデミック:　危機とその克服](https://www.osaka-gu.ac.jp/php/nakagawa/TRIZ/jforum/2020Forum/Corvid19Crisis2020/Corvid19Crisis-index.html)
+
+    > 日本国内の各県別の（一部、区市町村別）　感染確認数（各日、累計）、検査数、退院者数、死亡者数など。毎日更新。詳細データがコンパクトに可視化されており、日による変動が動的に見える。分かりやすく、貴重なサイトです。
+
+4. [新型コロナ対策究極ガイド　三才ブックス (著)](https://www.amazon.co.jp/%E6%96%B0%E5%9E%8B%E3%82%B3%E3%83%AD%E3%83%8A%E5%AF%BE%E7%AD%96%E7%A9%B6%E6%A5%B5%E3%82%AC%E3%82%A4%E3%83%89-%E4%B8%89%E6%89%8D%E3%83%96%E3%83%83%E3%82%AF%E3%82%B9-ebook/dp/B08R3DMZPC)
+   
+    > [日々更新される新型コロナウイルス情報をチェック！](https://books.google.co.jp/books?id=N0kQEAAAQBAJ&pg=PA32&lpg=PA32&dq=%22covid-2019.live%22&source=bl&ots=pU6-F4FOvQ&sig=ACfU3U1TFsKbrU02wb0B1Bc-MVVK0CzL4w&hl=zh-CN&sa=X&ved=2ahUKEwjourvNleHuAhXCAYgKHapxDr44KBDoATAGegQIBRAC#v=onepage&q=%22covid-2019.live%22&f=false)
+
+## 3. 発表
+
+1. eRum2020::CovidR Contest: [Awardee](https://milano-r.github.io/erum2020-covidr-contest/index.html)
+
+2. 第十三届R语言大会发表：[访问总量 1600 万 + 的疫情数据可视化应用的开发故事](https://china-r.org/files/ChinaR_13th.pdf)
