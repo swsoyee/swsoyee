@@ -1,6 +1,5 @@
 ---
 title: "「新型コロナウイルス感染速報」が引用元になった資料"
-author: "Su Wei"
 date: "2021-02-11"
 categories: [日本語]
 slug: covid-live-reference
