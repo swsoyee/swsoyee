@@ -1,13 +1,13 @@
 ---
-title: "コロナワクチンのデータを R で可視化する"
-date: "2021-02-19"
+title: "「新型コロナウイルス感染速報」が引用元になった資料(test)"
+date: "2021-02-11"
 categories: [日本語]
-slug: vaccine-data-in-japan
+slug: covid-live-reference-test
 output:
   blogdown::html_page:
     toc: true
-tags: [r,echarts,covid19]
-summary: '厚生労働省がページに掲載している「新型コロナワクチンの接種実績」を R で直接に取得して可視化する方法を紹介します。'
+tags: [covid19]
+summary: 'この記事には、自分が開発した「新型コロナウイルス感染速報」を紹介している資料のまとめです。自分が把握している限りの全てではないですが、「感染速報」が皆さんに信頼されていることを示されています。ツイター上に `covid-2019.live` でエゴサーチすればもっと出てくると思います。'
 ---
 
 ```{r setup, include=FALSE}
