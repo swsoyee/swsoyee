@@ -1,0 +1,142 @@
+---
+title: "コロナワクチンのデータを R で可視化する"
+date: "2021-02-19"
+categories: [日本語]
+slug: vaccine-data-in-japan
+output:
+  blogdown::html_page:
+    toc: true
+tags: [r,covid19]
+summary: '厚生労働省がページに掲載している「新型コロナワクチンの接種実績」を R で直接に取得して可視化する方法を紹介します。'
+---
+
+## 1. パッケージのロード
+```{r, message=FALSE}
+library(rvest)
+library(data.table)
+library(echarts4r)
+```
+
+## 2. ページのテーブルを取得
+```{r}
+# URL 設定
+url <- "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/vaccine_sesshujisseki.html"
+
+# ページを取得する
+html <- read_html(url)
+html
+
+# <table> タグがあるノッドを取得
+nodes <- html %>%
+  html_nodes("table")
+nodes
+
+# テーブルの中身を取得
+table <- nodes %>%
+  html_table(fill = TRUE)
+table
+
+# テーブルが一つしかないが、リストとして返却されたため、１番目のテーブルを取得
+table <- data.table(table[[1]])
+
+# ヘッダーを取得
+header <- table[1, ] %>%
+  as.list() %>%
+  unlist()
+header
+
+# 英語の方が誰でもわかるので、ここは英語のヘッダーを使うことになった
+header <- c("date", "total", "first", "second", "facility")
+
+table <- table[2:(ncol(table) - 2)]
+colnames(table) <- header
+table
+
+# 最後は日付の処理
+table[, date := gsub(pattern = "/", replacement = "", date)]
+table
+```
+
+
+## 3. `{echarts4r}` を使って可視化
+
+```{r}
+# 日付データのフォーマットを日付型にする
+table$date <- as.Date(as.character(table$date), format = "%Y%m%d")
+
+# character から numeric 型に変更
+cols = colnames(table)[2:5]
+table[, (cols) := lapply(.SD, as.numeric), .SDcols = cols]
+
+# 可視化
+table %>%
+  e_chart(x = date) %>%
+  e_bar(
+    total,
+    name = "合計",
+    barGap = "-100%"
+  ) %>%
+  e_bar(
+    first,
+    name = "１回目",
+    stack = 1
+  ) %>%
+  e_bar(
+    second,
+    name = "２回目",
+    stack = 1
+  ) %>%
+  e_line(
+    facility,
+    name = "施設数",
+    y_index = 1
+  ) %>%
+  e_grid(
+    left = "3%",
+    right = "15%",
+    bottom = "18%"
+  ) %>%
+  e_x_axis(
+    minInterval = 3600 * 24 * 1000,
+    axisLabel = list(
+      formatter = "{yyyy}-{MM}-{dd}"
+    ),
+    splitLine = list(
+      lineStyle = list(
+        opacity = 0.2
+      )
+    )
+  ) %>%
+  e_y_axis(
+    name = "回数",
+    nameGap = 10,
+    nameTextStyle = list(
+      padding = c(0, 0, 0, 50)
+    ),
+    splitLine = list(
+      lineStyle = list(opacity = 0.2)
+    ),
+    z = 999,
+    axisLabel = list(
+      inside = TRUE
+    ),
+    axisTick = list(
+      show = FALSE
+    )
+  ) %>%
+  e_title(
+    text = "先行接種の接種実績"
+  ) %>%
+  e_legend(
+    type = "scroll",
+    orient = "vertical",
+    left = "18%",
+    top = "15%",
+    right = "15%"
+  ) %>%
+  e_tooltip(trigger = "axis") %>%
+  e_datazoom(
+    minValueSpan = 604800000, # 3600 * 24 * 1000 * 7
+    startValue = max(table$date, na.rm = T) - 28
+  )
+```

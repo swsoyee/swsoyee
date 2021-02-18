@@ -1,0 +1,169 @@
+---
+title: "コロナワクチンのデータを R で可視化する"
+date: "2021-02-19"
+categories: [日本語]
+slug: vaccine-data-in-japan
+output:
+  blogdown::html_page:
+    toc: true
+tags: [r,covid19]
+summary: '厚生労働省がページに掲載している「新型コロナワクチンの接種実績」を R で直接に取得して可視化する方法を紹介します。'
+---
+
+<script src="/rmarkdown-libs/htmlwidgets/htmlwidgets.js"></script>
+<script src="/rmarkdown-libs/echarts4r/echarts-en.min.js"></script>
+<script src="/rmarkdown-libs/echarts4r/ecStat.min.js"></script>
+<script src="/rmarkdown-libs/echarts4r/dataTool.min.js"></script>
+<script src="/rmarkdown-libs/echarts4r-binding/echarts4r.js"></script>
+
+<div id="TOC">
+<ul>
+<li><a href="#パッケージのロード">1. パッケージのロード</a></li>
+<li><a href="#ページのテーブルを取得">2. ページのテーブルを取得</a></li>
+<li><a href="#echarts4r-を使って可視化">3. <code>{echarts4r}</code> を使って可視化</a></li>
+</ul>
+</div>
+
+<div id="パッケージのロード" class="section level2">
+<h2>1. パッケージのロード</h2>
+<pre class="r"><code>library(rvest)
+library(data.table)
+library(echarts4r)</code></pre>
+</div>
+<div id="ページのテーブルを取得" class="section level2">
+<h2>2. ページのテーブルを取得</h2>
+<pre class="r"><code># URL 設定
+url &lt;- &quot;https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/vaccine_sesshujisseki.html&quot;
+
+# ページを取得する
+html &lt;- read_html(url)
+html</code></pre>
+<pre><code>## {html_document}
+## &lt;html lang=&quot;ja&quot; class=&quot;is-nojs&quot;&gt;
+## [1] &lt;head prefix=&quot;og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: htt ...
+## [2] &lt;body class=&quot;t-mhlw nav03&quot;&gt;\r\n&lt;!--\r\n&lt;?ra g=&quot;!MB&quot; line=&quot;*&quot;?&gt;\r\n--&gt;\r\n ...</code></pre>
+<pre class="r"><code># &lt;table&gt; タグがあるノッドを取得
+nodes &lt;- html %&gt;%
+  html_nodes(&quot;table&quot;)
+nodes</code></pre>
+<pre><code>## {xml_nodeset (1)}
+## [1] &lt;table border=&quot;1&quot; cellpadding=&quot;1&quot; cellspacing=&quot;1&quot; style=&quot;width: 500px;&quot;&gt;&lt; ...</code></pre>
+<pre class="r"><code># テーブルの中身を取得
+table &lt;- nodes %&gt;%
+  html_table(fill = TRUE)
+table</code></pre>
+<pre><code>## [[1]]
+##           X1       X2       X3       X4      X5
+## 1       日付 接種回数 内１回目 内２回目 施設数※
+## 2 2021/02/17      125      125        0       8
+## 3 2021/02/18      486      486        0      16
+## 4       合計      611      611        0      －</code></pre>
+<pre class="r"><code># テーブルが一つしかないが、リストとして返却されたため、１番目のテーブルを取得
+table &lt;- data.table(table[[1]])
+
+# ヘッダーを取得
+header &lt;- table[1, ] %&gt;%
+  as.list() %&gt;%
+  unlist()
+header</code></pre>
+<pre><code>##         X1         X2         X3         X4         X5 
+##     &quot;日付&quot; &quot;接種回数&quot; &quot;内１回目&quot; &quot;内２回目&quot;  &quot;施設数※&quot;</code></pre>
+<pre class="r"><code># 英語の方が誰でもわかるので、ここは英語のヘッダーを使うことになった
+header &lt;- c(&quot;date&quot;, &quot;total&quot;, &quot;first&quot;, &quot;second&quot;, &quot;facility&quot;)
+
+table &lt;- table[2:(ncol(table) - 2)]
+colnames(table) &lt;- header
+table</code></pre>
+<pre><code>##          date total first second facility
+## 1: 2021/02/17   125   125      0        8
+## 2: 2021/02/18   486   486      0       16</code></pre>
+<pre class="r"><code># 最後は日付の処理
+table[, date := gsub(pattern = &quot;/&quot;, replacement = &quot;&quot;, date)]
+table</code></pre>
+<pre><code>##        date total first second facility
+## 1: 20210217   125   125      0        8
+## 2: 20210218   486   486      0       16</code></pre>
+</div>
+<div id="echarts4r-を使って可視化" class="section level2">
+<h2>3. <code>{echarts4r}</code> を使って可視化</h2>
+<pre class="r"><code># 日付データのフォーマットを日付型にする
+table$date &lt;- as.Date(as.character(table$date), format = &quot;%Y%m%d&quot;)
+
+# character から numeric 型に変更
+cols = colnames(table)[2:5]
+table[, (cols) := lapply(.SD, as.numeric), .SDcols = cols]
+
+# 可視化
+table %&gt;%
+  e_chart(x = date) %&gt;%
+  e_bar(
+    total,
+    name = &quot;合計&quot;,
+    barGap = &quot;-100%&quot;
+  ) %&gt;%
+  e_bar(
+    first,
+    name = &quot;１回目&quot;,
+    stack = 1
+  ) %&gt;%
+  e_bar(
+    second,
+    name = &quot;２回目&quot;,
+    stack = 1
+  ) %&gt;%
+  e_line(
+    facility,
+    name = &quot;施設数&quot;,
+    y_index = 1
+  ) %&gt;%
+  e_grid(
+    left = &quot;3%&quot;,
+    right = &quot;15%&quot;,
+    bottom = &quot;18%&quot;
+  ) %&gt;%
+  e_x_axis(
+    minInterval = 3600 * 24 * 1000,
+    axisLabel = list(
+      formatter = &quot;{yyyy}-{MM}-{dd}&quot;
+    ),
+    splitLine = list(
+      lineStyle = list(
+        opacity = 0.2
+      )
+    )
+  ) %&gt;%
+  e_y_axis(
+    name = &quot;回数&quot;,
+    nameGap = 10,
+    nameTextStyle = list(
+      padding = c(0, 0, 0, 50)
+    ),
+    splitLine = list(
+      lineStyle = list(opacity = 0.2)
+    ),
+    z = 999,
+    axisLabel = list(
+      inside = TRUE
+    ),
+    axisTick = list(
+      show = FALSE
+    )
+  ) %&gt;%
+  e_title(
+    text = &quot;先行接種の接種実績&quot;
+  ) %&gt;%
+  e_legend(
+    type = &quot;scroll&quot;,
+    orient = &quot;vertical&quot;,
+    left = &quot;18%&quot;,
+    top = &quot;15%&quot;,
+    right = &quot;15%&quot;
+  ) %&gt;%
+  e_tooltip(trigger = &quot;axis&quot;) %&gt;%
+  e_datazoom(
+    minValueSpan = 604800000, # 3600 * 24 * 1000 * 7
+    startValue = max(table$date, na.rm = T) - 28
+  )</code></pre>
+<div id="htmlwidget-1" style="width:100%;height:500px;" class="echarts4r html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1">{"x":{"theme":"","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"yAxis":[{"show":true,"name":"回数","nameGap":10,"nameTextStyle":{"padding":[0,0,0,50]},"splitLine":{"lineStyle":{"opacity":0.2}},"z":999,"axisLabel":{"inside":true},"axisTick":{"show":false}},{"type":"value"}],"xAxis":[{"data":["2021-02-17","2021-02-18"],"type":"time","boundaryGap":true,"minInterval":86400000,"axisLabel":{"formatter":"{yyyy}-{MM}-{dd}"},"splitLine":{"lineStyle":{"opacity":0.2}}}],"legend":{"data":["合計","１回目","２回目","施設数"],"show":true,"type":"scroll","orient":"vertical","left":"18%","top":"15%","right":"15%"},"series":[{"data":[{"value":["2021-02-17","125"]},{"value":["2021-02-18","486"]}],"name":"合計","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","barGap":"-100%"},{"data":[{"value":["2021-02-17","125"]},{"value":["2021-02-18","486"]}],"name":"１回目","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","stack":1},{"data":[{"value":["2021-02-17","0"]},{"value":["2021-02-18","0"]}],"name":"２回目","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","stack":1},{"data":[{"value":["2021-02-17"," 8"]},{"value":["2021-02-18","16"]}],"yAxisIndex":1,"xAxisIndex":0,"name":"施設数","type":"line","coordinateSystem":"cartesian2d"}],"grid":[{"left":"3%","right":"15%","bottom":"18%"}],"title":[{"text":"先行接種の接種実績"}],"tooltip":{"trigger":"axis"},"dataZoom":[{"minValueSpan":604800000,"startValue":"2021-01-21"}],"toolbox":{"feature":{"dataZoom":[]}}},"dispose":true},"evals":[],"jsHooks":[]}</script>
+</div>
