@@ -48,12 +48,13 @@ header
 # 英語の方が誰でもわかるので、ここは英語のヘッダーを使うことになった
 header <- c("date", "total", "first", "second", "facility")
 
-table <- table[2:(ncol(table) - 2)]
+table <- table[2:(nrow(table) - 2)]
 colnames(table) <- header
 table
 
-# 最後は日付の処理
+# 最後は日付と数値の処理
 table[, date := gsub(pattern = "/", replacement = "", date)]
+table <- table[ , lapply(.SD, function(x){gsub(pattern = ",", replacement = "", x)})]
 table
 ```
 
