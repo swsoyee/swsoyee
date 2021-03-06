@@ -48,7 +48,7 @@ header
 # 英語の方が誰でもわかるので、ここは英語のヘッダーを使うことになった
 header <- c("date", "total", "first", "second", "facility")
 
-table <- table[2:(nrow(table) - 2)]
+table <- table[2:(nrow(table) - 1)]
 colnames(table) <- header
 table
 
