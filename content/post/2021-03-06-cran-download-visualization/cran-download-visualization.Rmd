@@ -14,6 +14,8 @@ summary: 'A simple example of how to visualiza R package downloads hosted on CRA
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+## Daily Downloads
+
 ```{r library, message=FALSE}
 library(cranlogs)
 library(echarts4r)
@@ -38,16 +40,46 @@ data %>%
     smooth = TRUE,
     emphasis = list(focus = "series")
   ) %>%
-  e_y_axis(name = "downloads") %>%
-  e_mark_line(data = list(
-    type = "average",
-    name = "AVG"
-  ), symbolSize = 0) %>%
+  e_y_axis(name = "Downloads") %>%
+  e_mark_line(
+    data = list(
+      type = "average",
+      name = "AVG"
+    ),
+    symbolSize = 0
+  ) %>%
   e_tooltip(trigger = "axis") %>%
   e_legend(top = "22%") %>%
   e_grid(bottom = "10%", right = "5%", top = "20%") %>%
   e_title(
-    text = "Package Download Stats",
+    text = "Package Daily Download",
+    subtext = paste(
+      paste(summary$Package, summary$x, sep = ": "),
+      collapse = ", "
+    )
+  )
+```
+
+## Cumulative Downloads
+
+```{r cumulative downloads}
+data$cumulative <- ave(data$count, data$package, FUN = cumsum)
+
+data %>%
+  group_by(package) %>%
+  e_chart(date) %>%
+  e_line(
+    serie = cumulative,
+    symbol = "circle",
+    symbolSize = 1,
+    smooth = TRUE,
+    emphasis = list(focus = "series")
+  ) %>%
+  e_tooltip(trigger = "axis") %>%
+  e_legend(top = "22%") %>%
+  e_grid(bottom = "10%", right = "5%", top = "20%") %>%
+  e_title(
+    text = "Package Cumulative Download",
     subtext = paste(
       paste(summary$Package, summary$x, sep = ": "),
       collapse = ", "
