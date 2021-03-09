@@ -67,7 +67,8 @@ table</code></pre>
 ## 11 2021/03/03    2,531    2,531        0       101
 ## 12 2021/03/04    1,871    1,871        0       108
 ## 13 2021/03/05    7,295    7,295        0       149
-## 14       合計   46,469   46,469        0        －</code></pre>
+## 14 2021/03/08   24,327   24,327        0       288
+## 15       合計   70,796   70,796        0        －</code></pre>
 <pre class="r"><code># テーブルが一つしかないが、リストとして返却されたため、１番目のテーブルを取得
 table &lt;- data.table(table[[1]])
 
@@ -84,19 +85,20 @@ header &lt;- c(&quot;date&quot;, &quot;total&quot;, &quot;first&quot;, &quot;sec
 table &lt;- table[2:(nrow(table) - 1)]
 colnames(table) &lt;- header
 table</code></pre>
-<pre><code>##           date total first second facility
-##  1: 2021/02/17   125   125      0        8
-##  2: 2021/02/18   486   486      0       16
-##  3: 2021/02/19 4,428 4,428      0       68
-##  4: 2021/02/22 6,895 6,895      0       95
-##  5: 2021/02/24 5,954 5,954      0       96
-##  6: 2021/02/25 4,008 4,008      0      100
-##  7: 2021/02/26 6,634 6,634      0      100
-##  8: 2021/03/01 3,255 3,255      0      100
-##  9: 2021/03/02 2,987 2,987      0      100
-## 10: 2021/03/03 2,531 2,531      0      101
-## 11: 2021/03/04 1,871 1,871      0      108
-## 12: 2021/03/05 7,295 7,295      0      149</code></pre>
+<pre><code>##           date  total  first second facility
+##  1: 2021/02/17    125    125      0        8
+##  2: 2021/02/18    486    486      0       16
+##  3: 2021/02/19  4,428  4,428      0       68
+##  4: 2021/02/22  6,895  6,895      0       95
+##  5: 2021/02/24  5,954  5,954      0       96
+##  6: 2021/02/25  4,008  4,008      0      100
+##  7: 2021/02/26  6,634  6,634      0      100
+##  8: 2021/03/01  3,255  3,255      0      100
+##  9: 2021/03/02  2,987  2,987      0      100
+## 10: 2021/03/03  2,531  2,531      0      101
+## 11: 2021/03/04  1,871  1,871      0      108
+## 12: 2021/03/05  7,295  7,295      0      149
+## 13: 2021/03/08 24,327 24,327      0      288</code></pre>
 <pre class="r"><code># 最後は日付と数値の処理
 table[, date := gsub(pattern = &quot;/&quot;, replacement = &quot;&quot;, date)]
 table &lt;- table[ , lapply(.SD, function(x){gsub(pattern = &quot;,&quot;, replacement = &quot;&quot;, x)})]
@@ -113,7 +115,8 @@ table</code></pre>
 ##  9: 20210302  2987  2987      0      100
 ## 10: 20210303  2531  2531      0      101
 ## 11: 20210304  1871  1871      0      108
-## 12: 20210305  7295  7295      0      149</code></pre>
+## 12: 20210305  7295  7295      0      149
+## 13: 20210308 24327 24327      0      288</code></pre>
 </div>
 <div id="echarts4r-を使って可視化" class="section level2">
 <h2>3. <code>{echarts4r}</code> を使って可視化</h2>
@@ -196,5 +199,5 @@ table %&gt;%
     startValue = max(table$date, na.rm = T) - 28
   )</code></pre>
 <div id="htmlwidget-1" style="width:100%;height:500px;" class="echarts4r html-widget"></div>
-<script type="application/json" data-for="htmlwidget-1">{"x":{"theme":"","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"yAxis":[{"show":true,"name":"回数","nameGap":10,"nameTextStyle":{"padding":[0,0,0,50]},"splitLine":{"lineStyle":{"opacity":0.2}},"z":999,"axisLabel":{"inside":true},"axisTick":{"show":false}},{"type":"value"}],"xAxis":[{"data":["2021-02-17","2021-02-18","2021-02-19","2021-02-22","2021-02-24","2021-02-25","2021-02-26","2021-03-01","2021-03-02","2021-03-03","2021-03-04","2021-03-05"],"type":"time","boundaryGap":true,"minInterval":86400000,"axisLabel":{"formatter":"{yyyy}-{MM}-{dd}"},"splitLine":{"lineStyle":{"opacity":0.2}}}],"legend":{"data":["合計","１回目","２回目","施設数"],"show":true,"type":"scroll","orient":"vertical","left":"18%","top":"15%","right":"15%"},"series":[{"data":[{"value":["2021-02-17"," 125"]},{"value":["2021-02-18"," 486"]},{"value":["2021-02-19","4428"]},{"value":["2021-02-22","6895"]},{"value":["2021-02-24","5954"]},{"value":["2021-02-25","4008"]},{"value":["2021-02-26","6634"]},{"value":["2021-03-01","3255"]},{"value":["2021-03-02","2987"]},{"value":["2021-03-03","2531"]},{"value":["2021-03-04","1871"]},{"value":["2021-03-05","7295"]}],"name":"合計","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","barGap":"-100%"},{"data":[{"value":["2021-02-17"," 125"]},{"value":["2021-02-18"," 486"]},{"value":["2021-02-19","4428"]},{"value":["2021-02-22","6895"]},{"value":["2021-02-24","5954"]},{"value":["2021-02-25","4008"]},{"value":["2021-02-26","6634"]},{"value":["2021-03-01","3255"]},{"value":["2021-03-02","2987"]},{"value":["2021-03-03","2531"]},{"value":["2021-03-04","1871"]},{"value":["2021-03-05","7295"]}],"name":"１回目","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","stack":1},{"data":[{"value":["2021-02-17","0"]},{"value":["2021-02-18","0"]},{"value":["2021-02-19","0"]},{"value":["2021-02-22","0"]},{"value":["2021-02-24","0"]},{"value":["2021-02-25","0"]},{"value":["2021-02-26","0"]},{"value":["2021-03-01","0"]},{"value":["2021-03-02","0"]},{"value":["2021-03-03","0"]},{"value":["2021-03-04","0"]},{"value":["2021-03-05","0"]}],"name":"２回目","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","stack":1},{"data":[{"value":["2021-02-17","  8"]},{"value":["2021-02-18"," 16"]},{"value":["2021-02-19"," 68"]},{"value":["2021-02-22"," 95"]},{"value":["2021-02-24"," 96"]},{"value":["2021-02-25","100"]},{"value":["2021-02-26","100"]},{"value":["2021-03-01","100"]},{"value":["2021-03-02","100"]},{"value":["2021-03-03","101"]},{"value":["2021-03-04","108"]},{"value":["2021-03-05","149"]}],"yAxisIndex":1,"xAxisIndex":0,"name":"施設数","type":"line","coordinateSystem":"cartesian2d"}],"grid":[{"left":"3%","right":"15%","bottom":"18%"}],"title":[{"text":"先行接種の接種実績"}],"tooltip":{"trigger":"axis"},"dataZoom":[{"minValueSpan":604800000,"startValue":"2021-02-05"}],"toolbox":{"feature":{"dataZoom":[]}}},"dispose":true},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-1">{"x":{"theme":"","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"yAxis":[{"show":true,"name":"回数","nameGap":10,"nameTextStyle":{"padding":[0,0,0,50]},"splitLine":{"lineStyle":{"opacity":0.2}},"z":999,"axisLabel":{"inside":true},"axisTick":{"show":false}},{"type":"value"}],"xAxis":[{"data":["2021-02-17","2021-02-18","2021-02-19","2021-02-22","2021-02-24","2021-02-25","2021-02-26","2021-03-01","2021-03-02","2021-03-03","2021-03-04","2021-03-05","2021-03-08"],"type":"time","boundaryGap":true,"minInterval":86400000,"axisLabel":{"formatter":"{yyyy}-{MM}-{dd}"},"splitLine":{"lineStyle":{"opacity":0.2}}}],"legend":{"data":["合計","１回目","２回目","施設数"],"show":true,"type":"scroll","orient":"vertical","left":"18%","top":"15%","right":"15%"},"series":[{"data":[{"value":["2021-02-17","  125"]},{"value":["2021-02-18","  486"]},{"value":["2021-02-19"," 4428"]},{"value":["2021-02-22"," 6895"]},{"value":["2021-02-24"," 5954"]},{"value":["2021-02-25"," 4008"]},{"value":["2021-02-26"," 6634"]},{"value":["2021-03-01"," 3255"]},{"value":["2021-03-02"," 2987"]},{"value":["2021-03-03"," 2531"]},{"value":["2021-03-04"," 1871"]},{"value":["2021-03-05"," 7295"]},{"value":["2021-03-08","24327"]}],"name":"合計","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","barGap":"-100%"},{"data":[{"value":["2021-02-17","  125"]},{"value":["2021-02-18","  486"]},{"value":["2021-02-19"," 4428"]},{"value":["2021-02-22"," 6895"]},{"value":["2021-02-24"," 5954"]},{"value":["2021-02-25"," 4008"]},{"value":["2021-02-26"," 6634"]},{"value":["2021-03-01"," 3255"]},{"value":["2021-03-02"," 2987"]},{"value":["2021-03-03"," 2531"]},{"value":["2021-03-04"," 1871"]},{"value":["2021-03-05"," 7295"]},{"value":["2021-03-08","24327"]}],"name":"１回目","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","stack":1},{"data":[{"value":["2021-02-17","0"]},{"value":["2021-02-18","0"]},{"value":["2021-02-19","0"]},{"value":["2021-02-22","0"]},{"value":["2021-02-24","0"]},{"value":["2021-02-25","0"]},{"value":["2021-02-26","0"]},{"value":["2021-03-01","0"]},{"value":["2021-03-02","0"]},{"value":["2021-03-03","0"]},{"value":["2021-03-04","0"]},{"value":["2021-03-05","0"]},{"value":["2021-03-08","0"]}],"name":"２回目","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","stack":1},{"data":[{"value":["2021-02-17","  8"]},{"value":["2021-02-18"," 16"]},{"value":["2021-02-19"," 68"]},{"value":["2021-02-22"," 95"]},{"value":["2021-02-24"," 96"]},{"value":["2021-02-25","100"]},{"value":["2021-02-26","100"]},{"value":["2021-03-01","100"]},{"value":["2021-03-02","100"]},{"value":["2021-03-03","101"]},{"value":["2021-03-04","108"]},{"value":["2021-03-05","149"]},{"value":["2021-03-08","288"]}],"yAxisIndex":1,"xAxisIndex":0,"name":"施設数","type":"line","coordinateSystem":"cartesian2d"}],"grid":[{"left":"3%","right":"15%","bottom":"18%"}],"title":[{"text":"先行接種の接種実績"}],"tooltip":{"trigger":"axis"},"dataZoom":[{"minValueSpan":604800000,"startValue":"2021-02-08"}],"toolbox":{"feature":{"dataZoom":[]}}},"dispose":true},"evals":[],"jsHooks":[]}</script>
 </div>
