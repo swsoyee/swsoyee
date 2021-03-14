@@ -68,6 +68,7 @@ params:
   dateFormat: '2006 January 2'
   syntaxHighlighter: highlight.js
   clearReading: false
+  math: true
   hierarchicalCategories: true
   description: Infinity Loop's blog
   sidebarBehavior: 2
