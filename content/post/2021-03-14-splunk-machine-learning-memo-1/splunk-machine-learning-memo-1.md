@@ -79,12 +79,15 @@ summary: '在 2017、2018 年的时候，自学过一阵子机器学习相关的
 回归：R<sup>2</sup>、MAE（Mean Absolute Error）平均绝对误差、RMSE（Root Mean Square Error）均方根误差  
 
 MAE（平均绝对误差）：反映预测值误差的实际情况。
+
 $$MAE = \frac{1}{m}\sum_{i=1}^{m}\left | h(x_{i}) - y_{i} \right |$$
 
 RMSE（均方**根**误差）：衡量观测值与真实值之间的偏差。常用来作为机器学习模型预测结果衡量的标准。
+
 $$RMSE = \sqrt{\frac{1}{m}\sum_{i=1}^{m}(h(x_{i}) - y_{i})^2}$$
 
 MSE（均方误差）：衡量观测值与真实值之间的偏差。真实值与预测值的差值的平方然后求和平均。通过平方的形式便于求导，所以常被用作线性回归的损失函数。
+
 $$MSE = \frac{1}{m}\sum_{i=1}^{m}(y_{i} - \hat{y_{i}})^2$$
 
 分类：Precision-Recall、Accuracy、F1、AUC 等。
