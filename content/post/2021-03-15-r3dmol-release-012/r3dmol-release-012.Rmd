@@ -1,0 +1,120 @@
+---
+title: "r3dmol v0.1.2 Release Note"
+author: "Su Wei"
+date: "2021-03-15"
+output:
+  blogdown::html_page:
+    toc: true
+categories: [english]
+slug: r3dmol-release-012
+tags: [r,develop,visulization,r3dmol]
+thumbnailImage: 'https://s3.ax1x.com/2021/03/15/6r3Nwt.png'
+thumbnailImagePosition: right
+summary: "`{r3dmol}` v0.1.2 is now available on CRAN. By using `{r3dmol}`, you could create rich and fully interactive 3D visualizations of molecular data, and embed pdbs easily into a rmarkdown report or blogdown post."
+---
+
+`{r3dmol}` v0.1.2 is now available on CRAN. 
+By using `{r3dmol}`, you could create rich and fully interactive 3D visualizations of molecular data, and embed pdbs easily into a rmarkdown report or blogdown post.
+
+Some powerful features are introduced from v0.1.2.
+
+## 1. Convert Widget to PNG
+
+Some times you may not need an interactive widget or just want to reduce the size of the document, then you can use `m_png` to quickly convert the widget to a PNG image (base64 encoded).
+
+```{r png}
+library(r3dmol)
+
+r3dmol() %>%
+  m_add_model(data = pdb_1j72, format = "pdb") %>%
+  m_set_style(style = m_style_cartoon()) %>%
+  m_zoom_to() %>%
+  m_png(width = 800)
+```
+
+## 2. Quickly View Given Structure
+
+From v0.1.2, `m_glimpse()` has been added to create a scene with a number of simple defaults in order to quickly view the structure without having to write multiple lines of code.
+
+```{r glimpse()}
+m_glimpse(model = "4ozs", spin = TRUE)
+```
+
+## 3. Multiple Selections
+
+Please refer to this article ([Dealing with multiple selections to speed up adding lines & shapes.
+](https://swsoyee.github.io/r3dmol/articles/multi-selections.html)) to see more details.
+
+## 4. Multiple Viewers
+
+You could create and initialize an appropriate a grid of viewers that share a WebGL canvas from v0.1.2
+
+```{r multiple viewers}
+library(r3dmol)
+
+m1 <- r3dmol() %>%
+  m_add_model(data = pdb_6zsl, format = "pdb") %>%
+  m_zoom_to()
+
+m2 <- m1 %>%
+  m_set_style(style = m_style_cartoon(color = "spectrum"))
+
+m3 <- m1 %>%
+  m_set_style(style = m_style_stick())
+
+m4 <- m1 %>%
+  m_set_style(style = m_style_sphere())
+
+m_grid(
+  viewer = list(m1, m2, m3, m4),
+  control_all = TRUE,
+  viewer_config = m_viewer_spec(
+    backgroundColor = "black"
+  )
+)
+```
+
+## 5. Button
+
+Add `m_button()` function to support adding custom features in the viewer, 
+such as switching the style of the model, etc.
+
+<div class="alert warning">
+Unfortunately, if you want to use buttons in Rmarkdown, there is a bug where the buttons are not set in the correct position.  
+It has been fixed in the development version, but since the CRAN package is not allowed to be updated too often, the fix will be added in a v0.1.3.  
+If you really need to use this feature now, we recommend you to install the development version from Github.
+</div>
+
+```{r button}
+r3dmol() %>%
+  m_add_model(data = pdb_1j72, format = "pdb") %>%
+  m_zoom_to() %>%
+  m_button(
+    name = "cartoon",
+    label = "Cartoon",
+    align_items = "flex-end",
+    justify_content = "center",
+    func = "
+      function() {
+        viewer.setStyle({cartoon:{}});
+        viewer.render();
+      }
+    "
+  ) %>%
+  m_button(
+    name = "stick",
+    label = "Stick",
+    func = "
+      function() {
+        viewer.setStyle({stick:{}});
+        viewer.render();
+      }
+    "
+  )
+
+```
+
+Some other minor enhancements please refer to the [release notes](https://swsoyee.github.io/r3dmol/news/index.html#r3dmol-0-1-2-2021-03-14) for complete list of changes.  
+We hope `{r3dmol}` could improve and help you in your daily research life.  
+
+Please give the repository a star on [Github](https://github.com/swsoyee/r3dmol) if you find the package is useful. In addition, we need your feedback to improve the package, feel free to [create an issue](https://github.com/swsoyee/r3dmol/issues/new/choose) if you have any question or feature requirement.
