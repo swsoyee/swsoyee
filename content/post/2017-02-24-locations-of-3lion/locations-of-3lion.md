@@ -4,7 +4,7 @@ date: '2017-02-24'
 slug: locations-of-3lion
 categories: [中文]
 tags: [anime,location,photography]
-coverImage: https://s3.ax1x.com/2021/02/13/yrveu4.jpg
+coverImage: https://z3.ax1x.com/2021/02/13/yrveu4.jpg
 thumbnailImagePosition: right
 summary: '在“三月的狮子”，部分实景地点在中央区南部的月岛、佃公园、中央大桥附近，因此借着圣地巡礼的机会，顺道也把中央区南部值得一逛的地方腿游了一遍。——2017.2.24'
 ---
@@ -15,7 +15,7 @@ summary: '在“三月的狮子”，部分实景地点在中央区南部的月�
 
 本次自己的步行路线，估摸在10公里左右的步行路程。
 
-{{< image classes="fancybox fig-100" src="https://s3.ax1x.com/2021/02/13/yrjW9K.jpg" title="中央区南部地图和巡游点" >}}
+{{< image classes="fancybox fig-100" src="https://z3.ax1x.com/2021/02/13/yrjW9K.jpg" title="中央区南部地图和巡游点" >}}
 
 ## 「3月のライオン」聖地巡礼
 
@@ -29,26 +29,26 @@ summary: '在“三月的狮子”，部分实景地点在中央区南部的月�
 
 从 **月島** 往北走，来到 **佃小橋**，应该是三姐妹的住所附近了。这块区域很有日本的“老街”风情 2333，对于文青来说是个古典日式民宅的拍照的好去处 ~~是的，要拍什么和服日式小清新的这里绝对够格~~。只顾着对动画截图找地点了，没有拍老房子的照片。
 
-{{< image classes="fancybox fig-50" src="https://s3.ax1x.com/2021/02/13/yrj4je.png" group="group:1" title="佃小桥" >}}
-{{< image classes="fancybox fig-50" src="https://s3.ax1x.com/2021/02/13/yrj2h6.jpg" group="group:1" title="三次元模式佃小桥有一根碍眼的栏杆，怪不得作画里被删掉。" >}}
+{{< image classes="fancybox fig-50" src="https://z3.ax1x.com/2021/02/13/yrj4je.png" group="group:1" title="佃小桥" >}}
+{{< image classes="fancybox fig-50" src="https://z3.ax1x.com/2021/02/13/yrj2h6.jpg" group="group:1" title="三次元模式佃小桥有一根碍眼的栏杆，怪不得作画里被删掉。" >}}
 
 视线穿过老城区（？）的港湾看到新城区（？）的高楼，却别有一番新意。
 
-{{< image classes="fancybox fig-50" src="https://s3.ax1x.com/2021/02/13/yrjInH.png" group="group:1" title="佃小桥附近" >}}
-{{< image classes="fancybox nocaption fig-50" src="https://s3.ax1x.com/2021/02/13/yrjf1O.jpg" group="group:1" title="三次元" >}}
-{{< image classes="fancybox nocaption fig-50" src="https://s3.ax1x.com/2021/02/13/yrjX38.png" group="group:1" title="佃小桥附近" >}}
-{{< image classes="fancybox fig-50" src="https://s3.ax1x.com/2021/02/13/yrjO9f.jpg" group="group:1" title="施工不停的东京都（摊手）。" >}}
+{{< image classes="fancybox fig-50" src="https://z3.ax1x.com/2021/02/13/yrjInH.png" group="group:1" title="佃小桥附近" >}}
+{{< image classes="fancybox nocaption fig-50" src="https://z3.ax1x.com/2021/02/13/yrjf1O.jpg" group="group:1" title="三次元" >}}
+{{< image classes="fancybox nocaption fig-50" src="https://z3.ax1x.com/2021/02/13/yrjX38.png" group="group:1" title="佃小桥附近" >}}
+{{< image classes="fancybox fig-50" src="https://z3.ax1x.com/2021/02/13/yrjO9f.jpg" group="group:1" title="施工不停的东京都（摊手）。" >}}
 
 附上几张附近的非巡游照片:
 
-{{< image classes="fancybox fig-33" src="https://s3.ax1x.com/2021/02/13/yrjbNt.jpg" group="group:2" title="没认错的话右边的应该是樱花树，到下个月肯定很有格调。" >}}
-{{< image classes="fancybox fig-33" src="https://s3.ax1x.com/2021/02/13/yrjHAI.jpg" group="group:2" title="离开佃区向佃公园走去，来到佃大桥。" >}}
-{{< image classes="fancybox fig-33" src="https://s3.ax1x.com/2021/02/13/yrjjgS.jpg" group="group:2" title="住吉神社 应该也是某个镜头的取景地，可惜暂时没有对应截图就瞎拍了一张" >}}
+{{< image classes="fancybox fig-33" src="https://z3.ax1x.com/2021/02/13/yrjbNt.jpg" group="group:2" title="没认错的话右边的应该是樱花树，到下个月肯定很有格调。" >}}
+{{< image classes="fancybox fig-33" src="https://z3.ax1x.com/2021/02/13/yrjHAI.jpg" group="group:2" title="离开佃区向佃公园走去，来到佃大桥。" >}}
+{{< image classes="fancybox fig-33" src="https://z3.ax1x.com/2021/02/13/yrjjgS.jpg" group="group:2" title="住吉神社 应该也是某个镜头的取景地，可惜暂时没有对应截图就瞎拍了一张" >}}
 
 神社的鳥居倒是能对应上：
 
-{{< image classes="fancybox fig-50" src="https://s3.ax1x.com/2021/02/13/yrvpHs.png" group="group:3" title="住吉神社的鳥居。" >}}
-{{< image classes="fancybox nocaption fig-50" src="https://s3.ax1x.com/2021/02/13/yrjvjg.jpg" group="group:3" title="三次元" >}}
+{{< image classes="fancybox fig-50" src="https://z3.ax1x.com/2021/02/13/yrvpHs.png" group="group:3" title="住吉神社的鳥居。" >}}
+{{< image classes="fancybox nocaption fig-50" src="https://z3.ax1x.com/2021/02/13/yrjvjg.jpg" group="group:3" title="三次元" >}}
 
 ### 3. 佃公園
 
@@ -58,49 +58,49 @@ summary: '在“三月的狮子”，部分实景地点在中央区南部的月�
 
 这一块也有不少取景点，准备工作不足导致这块只能先鸽掉了。放上一些别的照片凑数吧。
 
-{{< image classes="fancybox nocaption fig-50" src="https://s3.ax1x.com/2021/02/13/yrjzuQ.jpg" group="group:4" title="樱花树（枝）" >}}
-{{< image classes="fancybox nocaption fig-50" src="https://s3.ax1x.com/2021/02/13/yrvPNq.jpg" group="group:4" title="远处能看到中央大桥了。" >}}
-{{< image classes="fancybox nocaption fig-33" src="https://s3.ax1x.com/2021/02/13/yrvCEn.jpg" group="group:4" title="中央大桥附近。" >}}
-{{< image classes="fancybox nocaption fig-33" src="https://s3.ax1x.com/2021/02/13/yrvkCV.jpg" group="group:4" title="中央大桥底，那是观光的水上巴士？" >}}
-{{< image classes="fancybox nocaption fig-33" src="https://s3.ax1x.com/2021/02/13/yrvEgU.jpg" group="group:4" title="左边的就是 中央大橋，而右边原处可以眺望到 天空樹。穿过中央大桥，右边是天空树，再向前走可以到达パリ広場和石川島公園。" >}}
-{{< image classes="fancybox nocaption fig-100" src="https://s3.ax1x.com/2021/02/13/yrvA3T.jpg" group="group:4" title="过桥，继续巡礼。" >}}
+{{< image classes="fancybox nocaption fig-50" src="https://z3.ax1x.com/2021/02/13/yrjzuQ.jpg" group="group:4" title="樱花树（枝）" >}}
+{{< image classes="fancybox nocaption fig-50" src="https://z3.ax1x.com/2021/02/13/yrvPNq.jpg" group="group:4" title="远处能看到中央大桥了。" >}}
+{{< image classes="fancybox nocaption fig-33" src="https://z3.ax1x.com/2021/02/13/yrvCEn.jpg" group="group:4" title="中央大桥附近。" >}}
+{{< image classes="fancybox nocaption fig-33" src="https://z3.ax1x.com/2021/02/13/yrvkCV.jpg" group="group:4" title="中央大桥底，那是观光的水上巴士？" >}}
+{{< image classes="fancybox nocaption fig-33" src="https://z3.ax1x.com/2021/02/13/yrvEgU.jpg" group="group:4" title="左边的就是 中央大橋，而右边原处可以眺望到 天空樹。穿过中央大桥，右边是天空树，再向前走可以到达パリ広場和石川島公園。" >}}
+{{< image classes="fancybox nocaption fig-100" src="https://z3.ax1x.com/2021/02/13/yrvA3T.jpg" group="group:4" title="过桥，继续巡礼。" >}}
 
 ### 4. 中央大橋
 
 突然回忆起动画中的男主是走过桥和去三姐妹住处的，所路过的就是这座 **中央大橋**，和传统江户风的 **月島** 相比，真切体会到了住在河对岸的透过落地玻璃门就能看到河的男主还真是壕得不行 2333。
 
-{{< image classes="fancybox fig-50" src="https://s3.ax1x.com/2021/02/13/yrvnb9.png" group="group:5" title="河对岸的桥下阶梯。" >}}
-{{< image classes="fancybox fig-50" src="https://s3.ax1x.com/2021/02/13/yrveu4.jpg" group="group:5" title="这个摄影点的右边栏杆上刻着莫名其妙的9个字母，莫不是好事之徒刻下在此处拍照hhh。" >}}
-{{< image classes="fancybox fig-50" src="https://s3.ax1x.com/2021/02/13/yrvQ4x.png" group="group:5" title="另一边的中央大桥底。" >}}
-{{< image classes="fancybox fig-50" src="https://s3.ax1x.com/2021/02/13/yrvmDJ.jpg" group="group:5" title="三次元实景" >}}
+{{< image classes="fancybox fig-50" src="https://z3.ax1x.com/2021/02/13/yrvnb9.png" group="group:5" title="河对岸的桥下阶梯。" >}}
+{{< image classes="fancybox fig-50" src="https://z3.ax1x.com/2021/02/13/yrveu4.jpg" group="group:5" title="这个摄影点的右边栏杆上刻着莫名其妙的9个字母，莫不是好事之徒刻下在此处拍照hhh。" >}}
+{{< image classes="fancybox fig-50" src="https://z3.ax1x.com/2021/02/13/yrvQ4x.png" group="group:5" title="另一边的中央大桥底。" >}}
+{{< image classes="fancybox fig-50" src="https://z3.ax1x.com/2021/02/13/yrvmDJ.jpg" group="group:5" title="三次元实景" >}}
 
 这张站位靠前了，转身就忘记了这张没拍好。
 
-{{< image classes="fancybox fig-50" src="https://s3.ax1x.com/2021/02/13/yrvKER.png" group="group:5" title="二次元的黑夜。" >}}
-{{< image classes="fancybox fig-50" src="https://s3.ax1x.com/2021/02/13/yrvMU1.jpg" group="group:5" title="三次元的白天。" >}}
-{{< image classes="fancybox fig-50" src="https://s3.ax1x.com/2021/02/13/yrvGvD.png" group="group:5" >}}
-{{< image classes="fancybox fig-50" src="https://s3.ax1x.com/2021/02/13/yrv8gO.jpg" group="group:5" >}}
-{{< image classes="fancybox fig-50" src="https://s3.ax1x.com/2021/02/14/ysOcmd.png" group="group:5" title="公路下的桥洞。" >}}
-{{< image classes="fancybox fig-50" src="https://s3.ax1x.com/2021/02/13/yrv38K.jpg" group="group:5" title="还原度还挺高">}}
-{{< image classes="fancybox fig-50" src="https://s3.ax1x.com/2021/02/13/yrv1C6.jpg" group="group:5" title="又偷工减料了 2333。" >}}
-{{< image classes="fancybox fig-50" src="https://s3.ax1x.com/2021/02/14/ysOyOH.jpg" group="group:5" title="三次元实景。">}}
-{{< image classes="fancybox fig-50" src="https://s3.ax1x.com/2021/02/14/ysXScF.jpg" group="group:5" title="从中央大桥上往观测所拍。" >}}
-{{< image classes="fancybox fig-50" src="https://s3.ax1x.com/2021/02/14/ysXCnJ.jpg" group="group:5" title="图中的那一对 Couple 也是妥妥也是来巡礼的。">}}
+{{< image classes="fancybox fig-50" src="https://z3.ax1x.com/2021/02/13/yrvKER.png" group="group:5" title="二次元的黑夜。" >}}
+{{< image classes="fancybox fig-50" src="https://z3.ax1x.com/2021/02/13/yrvMU1.jpg" group="group:5" title="三次元的白天。" >}}
+{{< image classes="fancybox fig-50" src="https://z3.ax1x.com/2021/02/13/yrvGvD.png" group="group:5" >}}
+{{< image classes="fancybox fig-50" src="https://z3.ax1x.com/2021/02/13/yrv8gO.jpg" group="group:5" >}}
+{{< image classes="fancybox fig-50" src="https://z3.ax1x.com/2021/02/14/ysOcmd.png" group="group:5" title="公路下的桥洞。" >}}
+{{< image classes="fancybox fig-50" src="https://z3.ax1x.com/2021/02/13/yrv38K.jpg" group="group:5" title="还原度还挺高">}}
+{{< image classes="fancybox fig-50" src="https://z3.ax1x.com/2021/02/13/yrv1C6.jpg" group="group:5" title="又偷工减料了 2333。" >}}
+{{< image classes="fancybox fig-50" src="https://z3.ax1x.com/2021/02/14/ysOyOH.jpg" group="group:5" title="三次元实景。">}}
+{{< image classes="fancybox fig-50" src="https://z3.ax1x.com/2021/02/14/ysXScF.jpg" group="group:5" title="从中央大桥上往观测所拍。" >}}
+{{< image classes="fancybox fig-50" src="https://z3.ax1x.com/2021/02/14/ysXCnJ.jpg" group="group:5" title="图中的那一对 Couple 也是妥妥也是来巡礼的。">}}
 
 ### 5. 霊岸島水位観測所
 
 剧中男主多次出现于该地，特别是一个奇形怪状很有艺术范的构造物居然是用来测量水位的。
 
-{{< image classes="fancybox fig-50" src="https://s3.ax1x.com/2021/02/14/ysOxpT.jpg" group="group:6" >}}
-{{< image classes="fancybox fig-50" src="https://s3.ax1x.com/2021/02/14/ysXpX4.jpg" group="group:6" title="要拍对角度应该是要上路面拍？" >}}
-{{< image classes="fancybox fig-50" src="https://s3.ax1x.com/2021/02/14/ysOz1U.jpg" group="group:6" >}}
-{{< image classes="fancybox fig-50" src="https://s3.ax1x.com/2021/02/14/ysXi7R.jpg" group="group:6" >}}
-{{< image classes="fancybox fig-50" src="https://s3.ax1x.com/2021/02/14/ysXPB9.jpg" group="group:6" >}}
-{{< image classes="fancybox fig-50" src="https://s3.ax1x.com/2021/02/14/ysXEh6.jpg" group="group:6" >}}
-{{< image classes="fancybox fig-50" src="https://s3.ax1x.com/2021/02/14/ysXAtx.jpg" group="group:6" >}}
-{{< image classes="fancybox fig-50" src="https://s3.ax1x.com/2021/02/14/ysXZ9K.jpg" group="group:6" title="hhhh，新房老贼背景偷工减料，楼的透视都成平面的了。">}}
-{{< image classes="fancybox fig-50" src="https://s3.ax1x.com/2021/02/14/ysXe1O.jpg" group="group:6" >}}
-{{< image classes="fancybox fig-50" src="https://s3.ax1x.com/2021/02/14/ysXmcD.jpg" group="group:6" title="嗯，动画中的海鸥诚不欺我也，毕竟我也拍到了hhh。">}}
+{{< image classes="fancybox fig-50" src="https://z3.ax1x.com/2021/02/14/ysOxpT.jpg" group="group:6" >}}
+{{< image classes="fancybox fig-50" src="https://z3.ax1x.com/2021/02/14/ysXpX4.jpg" group="group:6" title="要拍对角度应该是要上路面拍？" >}}
+{{< image classes="fancybox fig-50" src="https://z3.ax1x.com/2021/02/14/ysOz1U.jpg" group="group:6" >}}
+{{< image classes="fancybox fig-50" src="https://z3.ax1x.com/2021/02/14/ysXi7R.jpg" group="group:6" >}}
+{{< image classes="fancybox fig-50" src="https://z3.ax1x.com/2021/02/14/ysXPB9.jpg" group="group:6" >}}
+{{< image classes="fancybox fig-50" src="https://z3.ax1x.com/2021/02/14/ysXEh6.jpg" group="group:6" >}}
+{{< image classes="fancybox fig-50" src="https://z3.ax1x.com/2021/02/14/ysXAtx.jpg" group="group:6" >}}
+{{< image classes="fancybox fig-50" src="https://z3.ax1x.com/2021/02/14/ysXZ9K.jpg" group="group:6" title="hhhh，新房老贼背景偷工减料，楼的透视都成平面的了。">}}
+{{< image classes="fancybox fig-50" src="https://z3.ax1x.com/2021/02/14/ysXe1O.jpg" group="group:6" >}}
+{{< image classes="fancybox fig-50" src="https://z3.ax1x.com/2021/02/14/ysXmcD.jpg" group="group:6" title="嗯，动画中的海鸥诚不欺我也，毕竟我也拍到了hhh。">}}
 
 ## 周辺観光
 
@@ -110,29 +110,29 @@ summary: '在“三月的狮子”，部分实景地点在中央区南部的月�
 
 在前往海鲜市场的时候，发现附近有一个挺气派的寺庙 **築地本願寺**，老实说看着这个殿堂，怎么也不觉得是个佛教样式的建筑。殿堂的右侧被建筑工地用板材给围了起来（又是维修，到处挖挖补补和国内感觉一个样啊 23333），要不拍个全景应该是挺气派的。内部也是金碧辉煌的装潢，我猜这种地方应该是不能拍照的，于是进去歇息了一会就离开了。
 
-{{< wide-image src="https://s3.ax1x.com/2021/02/14/ysXnje.jpg" title="築地本願寺" >}}
+{{< wide-image src="https://z3.ax1x.com/2021/02/14/ysXnje.jpg" title="築地本願寺" >}}
 
 不知是因为非旅游旺季，还是其他的原因，看起来十分冷清的样子，并不是每家店面都有开着，和 **月島** 那条街一个好像快倒闭的样子2333。
 
-{{< image classes="fancybox fig-75 left" src="https://s3.ax1x.com/2021/02/14/ysXMBd.jpg" group="group:7" >}}
-{{< image classes="fancybox fig-25 left" src="https://s3.ax1x.com/2021/02/14/ysXKnH.jpg" group="group:7" >}}
-{{< image classes="fancybox fig-25 left" src="https://s3.ax1x.com/2021/02/14/ysXQHA.jpg" group="group:7" >}}
-{{< image classes="fancybox fig-25 left" src="https://s3.ax1x.com/2021/02/14/ysX1AI.jpg" group="group:7" >}}
+{{< image classes="fancybox fig-75 left" src="https://z3.ax1x.com/2021/02/14/ysXMBd.jpg" group="group:7" >}}
+{{< image classes="fancybox fig-25 left" src="https://z3.ax1x.com/2021/02/14/ysXKnH.jpg" group="group:7" >}}
+{{< image classes="fancybox fig-25 left" src="https://z3.ax1x.com/2021/02/14/ysXQHA.jpg" group="group:7" >}}
+{{< image classes="fancybox fig-25 left" src="https://z3.ax1x.com/2021/02/14/ysX1AI.jpg" group="group:7" >}}
 
 上等品不亏是上等品，虽然并没有尝过，但是妥妥的上等品价格。一般超市同等大小的生鱼片（长方形）在 300 円到 800 円之间，这里粗略看了一下要在 1200 円往上走……除了卖生鲜外，也有不少可以进店品尝的 **日式海鲜** 店，但价格自然也是起飞的：每人最便宜在 2000 円起步，一般在 4000 円每人左右应该可以吃到还算可以的了（目测看板上的价格）。~~我……还是回家买打折的 150 円处理好的一条的鯖回家吃吧 2333。~~
 
 附近的 **波除稲荷神社**：
 
-{{< image classes="fancybox fig-50" src="https://s3.ax1x.com/2021/02/14/ysX3Nt.jpg" group="group:7" title="波除稲荷神社" >}}
-{{< image classes="fancybox fig-50" src="https://s3.ax1x.com/2021/02/14/ysX84P.jpg" group="group:7" title="神社里的银杏" >}}
+{{< image classes="fancybox fig-50" src="https://z3.ax1x.com/2021/02/14/ysX3Nt.jpg" group="group:7" title="波除稲荷神社" >}}
+{{< image classes="fancybox fig-50" src="https://z3.ax1x.com/2021/02/14/ysX84P.jpg" group="group:7" title="神社里的银杏" >}}
 
 
 ### 2. 浜離宮恩賜庭園
 
 绕完了 **築地市場** 往西南方向走约 800 米，就能来到 **浜離宮恩賜庭園**。
 
-{{< image classes="fancybox fig-50" src="https://s3.ax1x.com/2021/02/14/ysXJ9f.jpg" group="group:8" title="庭院附近" >}}
-{{< image classes="fancybox fig-50" src="https://s3.ax1x.com/2021/02/14/ysXY38.jpg" group="group:8" title="庭院门口" >}}
+{{< image classes="fancybox fig-50" src="https://z3.ax1x.com/2021/02/14/ysXJ9f.jpg" group="group:8" title="庭院附近" >}}
+{{< image classes="fancybox fig-50" src="https://z3.ax1x.com/2021/02/14/ysXY38.jpg" group="group:8" title="庭院门口" >}}
 
 由于门票需要 300 円，而最晚的入场时间为下午4点半，此时已经是 4 点钟，权衡了一下还是没选择进去 ~~反正肯定还有机会 2333~~。在门口看到零零星星的歪果仁，至少这里肯定是哪里的旅游书里推荐过的观光点没跑了。脑补一下，日式的故宫御花园样式庭院，大概是这么个样子吧我猜。
 
@@ -140,44 +140,44 @@ summary: '在“三月的狮子”，部分实景地点在中央区南部的月�
 
 离开浜 **離宮恩賜庭園**，顺着道路往东北走500米左右可以直达 **银座**。
 
-{{< image classes="fancybox nocaption fig-75 right" src="https://s3.ax1x.com/2021/02/14/ysXauQ.jpg" group="group:9" title="沿途街景" >}}
-{{< image classes="fancybox nocaption fig-25 right" src="https://s3.ax1x.com/2021/02/14/ysXtgS.jpg" group="group:9" title="沿途街景" >}}
-{{< image classes="fancybox fig-25 right" src="https://s3.ax1x.com/2021/02/14/ysXNjg.jpg" group="group:9" >}}
-{{< image classes="fancybox fig-25 right" src="https://s3.ax1x.com/2021/02/14/ysXdBj.jpg" group="group:9" >}}
+{{< image classes="fancybox nocaption fig-75 right" src="https://z3.ax1x.com/2021/02/14/ysXauQ.jpg" group="group:9" title="沿途街景" >}}
+{{< image classes="fancybox nocaption fig-25 right" src="https://z3.ax1x.com/2021/02/14/ysXtgS.jpg" group="group:9" title="沿途街景" >}}
+{{< image classes="fancybox fig-25 right" src="https://z3.ax1x.com/2021/02/14/ysXNjg.jpg" group="group:9" >}}
+{{< image classes="fancybox fig-25 right" src="https://z3.ax1x.com/2021/02/14/ysXdBj.jpg" group="group:9" >}}
 
 
 一路走到 **東銀座駅** 附近，就能看到 **歌舞伎座**。~~嗯，反正也看不懂歌舞伎啥的，萌豚当然不会对这种地方感兴趣233。~~
 
-{{< image classes="fancybox fig-75 left" src="https://s3.ax1x.com/2021/02/14/ysviJx.jpg" group="group:10" title="歌舞伎座" >}}
-{{< image classes="fancybox nocaption fig-25 left" src="https://s3.ax1x.com/2021/02/14/ysvPF1.jpg" group="group:10" title="银座" >}}
-{{< image classes="fancybox nocaption fig-25 left" src="https://s3.ax1x.com/2021/02/14/ysvpw9.jpg" group="group:10" title="银座" >}}
-{{< image classes="fancybox fig-25" src="https://s3.ax1x.com/2021/02/14/ysv9oR.jpg" group="group:10" title="银座" >}}
+{{< image classes="fancybox fig-75 left" src="https://z3.ax1x.com/2021/02/14/ysviJx.jpg" group="group:10" title="歌舞伎座" >}}
+{{< image classes="fancybox nocaption fig-25 left" src="https://z3.ax1x.com/2021/02/14/ysvPF1.jpg" group="group:10" title="银座" >}}
+{{< image classes="fancybox nocaption fig-25 left" src="https://z3.ax1x.com/2021/02/14/ysvpw9.jpg" group="group:10" title="银座" >}}
+{{< image classes="fancybox fig-25" src="https://z3.ax1x.com/2021/02/14/ysv9oR.jpg" group="group:10" title="银座" >}}
 
 第二次路过 **银座**，到处洋溢着一股壕的气息 23333。对这种土豪品牌也没有什么买买买欲望 ~~还不是因为穷~~，也就什么店都没进，只是到处走走熟悉一下地形。至于什么品牌店在哪里，问 Google 才是一个明智的选择。
 
-{{< image classes="fancybox nocaption fig-100" src="https://s3.ax1x.com/2021/02/14/ysvFW6.jpg" group="group:10" title="银座" >}}
+{{< image classes="fancybox nocaption fig-100" src="https://z3.ax1x.com/2021/02/14/ysvFW6.jpg" group="group:10" title="银座" >}}
 
 值得一提的是即将要拆掉的 SONY 大楼，貌似要改建成 SONY 公园。对于一个曾经的索狗来说，这个地方要比逛商场有趣多了 ~~毕竟免费~~。前阵子来的时候楼里还在做 SONY 从创业以来的设备展，这次偶然发现居然升级成了 Part2？上次来的时候这里是历代 SONY 设备大展览，Part2 是升级版？本来只是打算路过的然而好奇心驱使又进去了。 ~~过了这阵子这座大楼就要被夷为平地了，权当来为其“送个终”2333。~~
 
-{{< image classes="fancybox fig-75 left" src="https://s3.ax1x.com/2021/02/14/ysvq7d.jpg" group="group:11" title="Sony Building" >}}
-{{< image classes="fancybox nocaption fig-25 left" src="https://s3.ax1x.com/2021/02/14/ysvb0H.jpg" group="group:11" title="内部展览" >}}
-{{< image classes="fancybox nocaption fig-25 left" src="https://s3.ax1x.com/2021/02/14/ysvo6O.jpg" group="group:11" title="内部展览" >}}
-{{< image classes="fancybox fig-25 left" src="https://s3.ax1x.com/2021/02/14/ysvHne.jpg" group="group:11" title="内部展览" >}}
+{{< image classes="fancybox fig-75 left" src="https://z3.ax1x.com/2021/02/14/ysvq7d.jpg" group="group:11" title="Sony Building" >}}
+{{< image classes="fancybox nocaption fig-25 left" src="https://z3.ax1x.com/2021/02/14/ysvb0H.jpg" group="group:11" title="内部展览" >}}
+{{< image classes="fancybox nocaption fig-25 left" src="https://z3.ax1x.com/2021/02/14/ysvo6O.jpg" group="group:11" title="内部展览" >}}
+{{< image classes="fancybox fig-25 left" src="https://z3.ax1x.com/2021/02/14/ysvHne.jpg" group="group:11" title="内部展览" >}}
 
 个人的残缺的美术水准来看，我很欣赏 SONY 的艺术水准，不仅设备的工业设计颜值高，连展台的放置也能处处彰显逼格。和上次来的完全不同，原来的设备展览已经全部撤掉了，这次基本为展望 SONY PARK 的内容。Goodbye部分为老旧设备展，Hello 为放眼未来，流石会玩。
 
-{{< image classes="fancybox nocaption fig-75 right" src="https://s3.ax1x.com/2021/02/14/ysvTXD.jpg" group="group:11" title="是的，这仅仅是其中的一张23333，还有很多张（大草原不可避）。" >}}
-{{< image classes="fancybox nocaption fig-25 right" src="https://s3.ax1x.com/2021/02/14/ysvXtI.jpg" group="group:11" title="黑科技系列？" >}}
-{{< image classes="fancybox nocaption fig-25 right" src="https://s3.ax1x.com/2021/02/14/ysvOAA.jpg" group="group:11" title="怎么搞起了机械表的？？" >}}
-{{< image classes="fancybox nocaption fig-25 right" src="https://s3.ax1x.com/2021/02/14/ysvjht.jpg" group="group:11" title="可惜我已经换水果机了。" >}}
-{{< image classes="fancybox fig-100" src="https://s3.ax1x.com/2021/02/14/ysvx9P.jpg" group="group:11" title="古德拜，骚尼楼。" >}}
+{{< image classes="fancybox nocaption fig-75 right" src="https://z3.ax1x.com/2021/02/14/ysvTXD.jpg" group="group:11" title="是的，这仅仅是其中的一张23333，还有很多张（大草原不可避）。" >}}
+{{< image classes="fancybox nocaption fig-25 right" src="https://z3.ax1x.com/2021/02/14/ysvXtI.jpg" group="group:11" title="黑科技系列？" >}}
+{{< image classes="fancybox nocaption fig-25 right" src="https://z3.ax1x.com/2021/02/14/ysvOAA.jpg" group="group:11" title="怎么搞起了机械表的？？" >}}
+{{< image classes="fancybox nocaption fig-25 right" src="https://z3.ax1x.com/2021/02/14/ysvjht.jpg" group="group:11" title="可惜我已经换水果机了。" >}}
+{{< image classes="fancybox fig-100" src="https://z3.ax1x.com/2021/02/14/ysvx9P.jpg" group="group:11" title="古德拜，骚尼楼。" >}}
 
 离开大楼已经时候不早了，考虑了一下晚饭还是选择赶回家煮面条吃，趁着下班时间还差一点前赶紧上电车，免得又被挤得脸贴车门 ~~生无可恋~~。
 
-{{< image classes="fancybox nocaption fig-50" src="https://s3.ax1x.com/2021/02/14/ysvz1f.jpg" group="group:12" title="最后几张街拍。" >}}
-{{< image classes="fancybox nocaption fig-50" src="https://s3.ax1x.com/2021/02/14/ysxpjS.jpg" group="group:12" title="最后几张街拍。" >}}
-{{< image classes="fancybox nocaption fig-50" src="https://s3.ax1x.com/2021/02/14/ysxSc8.jpg" group="group:12" title="最后几张街拍。" >}}
-{{< image classes="fancybox fig-50" src="https://s3.ax1x.com/2021/02/14/ysxCng.jpg" group="group:12" title="最后几张街拍。" >}}
+{{< image classes="fancybox nocaption fig-50" src="https://z3.ax1x.com/2021/02/14/ysvz1f.jpg" group="group:12" title="最后几张街拍。" >}}
+{{< image classes="fancybox nocaption fig-50" src="https://z3.ax1x.com/2021/02/14/ysxpjS.jpg" group="group:12" title="最后几张街拍。" >}}
+{{< image classes="fancybox nocaption fig-50" src="https://z3.ax1x.com/2021/02/14/ysxSc8.jpg" group="group:12" title="最后几张街拍。" >}}
+{{< image classes="fancybox fig-50" src="https://z3.ax1x.com/2021/02/14/ysxCng.jpg" group="group:12" title="最后几张街拍。" >}}
   
   
 ### etc. 日比谷公園
@@ -188,7 +188,7 @@ summary: '在“三月的狮子”，部分实景地点在中央区南部的月�
 
 实地走了一下这块区域，假如让我推荐一条自由行（仅限对自己11路公交车有足够自信的人士）路线的话，可以进行一下优化（船游这种固定模式的路线的话网上应该不少，在此仅仅介绍腿游）。
 
-{{< image classes="fancybox fig-100" src="https://s3.ax1x.com/2021/02/14/ysxDUA.jpg" title="中央区南部地图和巡游点" >}}
+{{< image classes="fancybox fig-100" src="https://z3.ax1x.com/2021/02/14/ysxDUA.jpg" title="中央区南部地图和巡游点" >}}
 
 预估行走距离在 10 公里以上，根据路线不同可能会 ± 2.5 公里。
 

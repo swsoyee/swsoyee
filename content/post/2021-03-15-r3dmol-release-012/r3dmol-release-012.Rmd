@@ -8,7 +8,7 @@ output:
 categories: [english]
 slug: r3dmol-release-012
 tags: [r,develop,visulization,r3dmol]
-thumbnailImage: 'https://s3.ax1x.com/2021/03/15/6r3Nwt.png'
+thumbnailImage: 'https://z3.ax1x.com/2021/03/15/6r3Nwt.png'
 thumbnailImagePosition: right
 summary: "`{r3dmol}` v0.1.2 is now available on CRAN. By using `{r3dmol}`, you could create rich and fully interactive 3D visualizations of molecular data, and embed pdbs easily into a rmarkdown report or blogdown post."
 ---
