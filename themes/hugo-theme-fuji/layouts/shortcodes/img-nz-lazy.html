@@ -1,5 +1,0 @@
-{{- if len .Params | eq 3 -}}
-<p><div class="image-wrapper ratio-{{ index .Params 0 }}">
-  <img class="lazyload" data-src="{{ index .Params 2 | relURL | safeURL }}" alt="{{ index .Params 1 }}" />
-</div></p>
-{{- end -}}

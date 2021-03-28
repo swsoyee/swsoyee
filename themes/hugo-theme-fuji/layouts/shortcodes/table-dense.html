@@ -1,3 +1,0 @@
-{{ $htmlTable := .Inner | markdownify }}
-{{ $htmlTable := replace $htmlTable "<table>" "<table class=\"table-dense\">" }}
-{{ $htmlTable | safeHTML }}
