@@ -1,13 +1,15 @@
 ---
-title: 更换并统一 blogdown 中的代码块主题
+title: 处理 blogdown 中 Rmd 和 md 文章代码块高亮主题的问题
 date: '2021-04-01'
 slug: chang-highligh-theme-in-blogdown
 categories: [中文]
 tags: [blogdown,highlight]
-summary: '偶然发现现在博客用的主题对原始文件是 Rmd 的文章和 md 中的文章代码块默认渲染出来的结果居然是不一样的，就稍微深入调查了一下原因。最终通过关闭 hugo 主题的 hightlight 高亮和设定 `{blogdown}` 全局设定（不完美）解决了问题。'
+summary: '偶然发现现在博客用的主题对原始文件是 Rmd 的文章和 md 中的文章代码块默认渲染出来的结果居然是不一样的，就稍微深入调查了一下原因。最终通过全局关闭 hugo 主题的 `hightlight.js` 高亮，hugo 自定义参数引入 `hightlight.js` 和应用 `{blogdown}` 全局设定完美解决了问题。'
 ---
 
 太长不看系列总结：
+
+对于含有 R 语言代码的文章处理方法（不使用 `highligh.js` 而使用 R markdown 自带的高亮）：
 
 1. 在博客根目录下建立全局设定文件 `_output.yml` 并设定主题。
     ```yaml
@@ -15,11 +17,16 @@ summary: '偶然发现现在博客用的主题对原始文件是 Rmd 的文章�
       toc: true
       highlight: "tango"
     ```
-2. 博客包含代码的文章仅使用 Rmd 格式，并且关闭 hugo 主题中的 highlight 相关设定。
+2. 关闭 hugo 主题中的 highlight 相关设定（为了避免双重渲染）。
 3. 重新渲染所有文章（为了使用新设定）。
     ```r
     blogdown::build_site(build_rmd = TRUE)
     ```
+
+对于包含（R markdown 非完美支持）其他语言文章的高亮处理方法（使用 `highligh.js`）：
+
+1. 添加参数，修改 hugo 主题模版即可（参考 [`3a57a32`](https://github.com/swsoyee/swsoyee/commit/3a57a32052f000b7bcbc6b4151c847cd103b6202)）。
+
 ---
 
 偶然发现现在博客用的主题对原始文件是 Rmd 的文章和 md 中的文章代码块默认渲染出来的结果居然是不一样的，就稍微深入调查了一下原因。
@@ -68,6 +75,21 @@ blogdown::build_site(build_rmd = TRUE)
 2. 自己动手改掉被默认主题覆盖掉自定义主题的问题（花了一两个小时尝试过失败了，要修复的话可能比较花时间，而且感觉收益不是特别大）；
 3. 不使用 md 格式的文章，包含代码的文章全部改成 Rmd 格式，并且关闭 hugo 主题的 `highlight.js` 功能（主题得到了统一，并且同时解决了重复渲染的问题）。
 
-经过一番折腾最后还算得到了个比较好的解决办法了吧。对 hugo 主题的设定编写也有了个更深入的理解，以后自己在定制化或者编写新功能的时候也算是知道该如何下手了。
+嗯，似乎采取方法 3 能比较好的解决问题。但其实这种方法也是有一定的缺点的。
 
-最后还差一步就是暂时还不知道 R markdown 中内置了多少高亮到底有多少主题，和如何使用自定义主题了。这个就下次再调查吧。
+1. R markdown 的默认主题数量远远比 `highligh.js` 要少，根据[文档](https://bookdown.org/yihui/rmarkdown/appearance-and-style-1.html)说明，只有下面这几种（在线预览可以参考这篇[Pandoc Syntax Highlighting Examples](https://www.garrickadenbuie.com/blog/pandoc-syntax-highlighting-examples/)）：
+    > highlight specifies the syntax highlighting style. Supported styles include `"default"`, `"tango"`, `"pygments"`, `"kate"`, `"monochrome"`, `"espresso"`, `"zenburn"`, and `"haddock"`. Pass `null` to prevent syntax highlighting.
+2. 由于 `highligh.js` 的高亮主题文件和 `pandoc` (R markdown 的渲染器) 的类名不完全一致，因此不能直接替代使用。因此主题过少的问题可以通过在头部 `yaml` 设定自定义的高亮 CSS 来解决，不过这种情况的话就需要自己编写 CSS 了：
+    ```yaml
+    blogdown::html_page:
+      toc: true
+      highlight: null
+      css: "/css/square-highlight.css"
+    ```
+3.  `highligh.js` 对于 R 代码的支持远远要比 `pandoc` 提供的要差（主要原因还是 `highligh.js` 的 R 语言支持这边似乎并没有人长期更新维护），因此如果想对 R 代码得到更好的支持的话，建议目前还是使用 R markdown 的高亮渲染更为稳妥。
+
+一顿分析之后，最终得到的答案都是关闭 hugo 高亮功能而选择 R markdown 自带的高亮渲染才是一个比较好的方案。但是还有一个问题需要解决一下：如果想在文章中插入 R markdown 不支持的语言的渲染怎么办？
+
+解决办法还是有的：虽然全局关闭了 `highligh.js` 的支持，但是可以在会使用到别的语言的 md 文章中手动插入引入 `highligh.js` 的库和 CSS 样式文件就可以解决了。更高级的解决办法就可以直接当个 Feature 写入主题中，然后在文章头部设定处追加开关即可（可参考这一次提交 [`3a57a32`](https://github.com/swsoyee/swsoyee/commit/3a57a32052f000b7bcbc6b4151c847cd103b6202)）。
+
+经过几天的研究一番折腾后算是比较良好地解决了这个问题。同时对 hugo 主题的设定编写也有了个更深入的理解，以后自己在定制化或者编写新功能的时候也算是知道该如何下手了。
