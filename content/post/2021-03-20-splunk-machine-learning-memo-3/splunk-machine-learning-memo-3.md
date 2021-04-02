@@ -7,6 +7,7 @@ tags: [machine-learning,memo]
 thumbnailImage: 'https://z3.ax1x.com/2021/03/14/6B9oHx.jpg'
 thumbnailImagePosition: right
 summary: '第四章《往 Splunk 导入数据的基本操作》的阅读笔记。主要是讲解如何往 Splunk 中导入数据和设置 SPL 使用环境的工作流程。'
+spl: true
 ---
 
 第四章《往 Splunk 导入数据的基本操作》的阅读笔记。主要是讲解如何往 Splunk 中导入数据和设置 SPL 使用环境的工作流程。

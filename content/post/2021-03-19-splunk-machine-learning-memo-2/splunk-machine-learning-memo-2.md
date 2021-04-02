@@ -7,6 +7,7 @@ tags: [machine-learning,memo]
 thumbnailImage: 'https://z3.ax1x.com/2021/03/14/6B9oHx.jpg'
 thumbnailImagePosition: right
 summary: '第三章《基于 Splunk / MLTK 的机器学习》的阅读笔记。主要是讲解一些常用的机器学习算法，和在 Splunk 中的一些相关 Demo。'
+spl: true
 ---
 
 第三章《基于 Splunk / MLTK 的机器学习》的阅读笔记。主要是讲解一些常用的机器学习算法，和在 Splunk 中的一些相关 Demo。
