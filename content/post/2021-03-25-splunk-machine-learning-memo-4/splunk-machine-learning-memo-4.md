@@ -92,7 +92,7 @@ $$x_{new} = \frac{x - x_{min}}{x_{max} - x_{min}}$$
 但这种归一化容易受到异常值的影响，因此对于最大值最小值无法提前确定的情况的话最好先对异常值先做一些处理，或者用 5.2.3 的标准化方法。
 
 ```spl
-index="tutorialdata_access
+index="tutorialdata_access"
 | eventstats max(bytes) as bytes_max min(bytes) as bytes_min
 | eval bytes_mms=(bytes-bytes_min)/(bytes_max-bytes_min)
 | table bytes bytes_mms
@@ -117,7 +117,7 @@ index="tutorialdata_access"
 ### 5.2.4 数值的离散化（分组）
 
 ```spl
-index="tutorialdata_access
+index="tutorialdata_access"
 | bin bytes span=1000 as byte_bin
 | table bytes byte_bin
 ```
