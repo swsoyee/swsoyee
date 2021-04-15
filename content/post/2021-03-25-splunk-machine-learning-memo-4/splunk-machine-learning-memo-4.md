@@ -16,7 +16,7 @@ spl: true
 
 Splunk 没有一般编程语言的 `Date` 类型，除了在生成 Index 时候自带的 `_time`（本质是 UNIX 时间） 列外都是普通的文本类型。
 
-下面这条命了展示如何将时间文本转换成 UNIX 时间。
+下面这条命令展示如何将时间文本转换成 UNIX 时间。
 
 ```spl
 index="tutorialdata_access"
@@ -60,7 +60,7 @@ index="tutorialdata_access"
 | table req_time time_hour time_category
 ```
 
-假设在当如导入数据时，有将 `req_time` 进行正确的时间戳设置的话，Splunk 会自动生成一些系统列供使用。如此一来就能方便使用了。
+如果在导入数据时，有将 `req_time` 进行正确的时间戳设置的话，Splunk 会自动生成一些系统列供使用。如此一来就能方便使用了。
 
 ```spl
 index="tutorialdata_access"
@@ -124,7 +124,7 @@ index="tutorialdata_access"
 
 ### 5.2.5 计算移动平均
 
-近6个小时的移动平均线计算示例：
+近 6 个小时的移动平均线计算示例：
 
 ```spl
 index="tutorialdata_access"
@@ -139,7 +139,7 @@ index="tutorialdata_access"
 ```
 
 `trendtype`：`sma`（简易移动平均）、`ema`（指数移动平均）、`wma`（加权移动平均）。
-不过有些时候 `trendline` 能用的地方有限，这个时候可以手动用 `streamstats` 来达成相同目的（后者可以算是前者的超级了）。
+不过有些时候 `trendline` 能用的地方有限，这个时候可以手动用 `streamstats` 来达成相同目的（后者可以算是前者的超集了）。
 
 ## 5.3 文本相关操作
 
@@ -242,6 +242,7 @@ index="tutorialdata_access"
 ```
 
 简要说明一下几个比较难理解的点：
+
 - 也正因为是汇总进行 transaction，因此需要首先对数据进行按时间进行升序排列。
 - `endswith=eval(action=="purchase")` 就是选取所有 transaction 最后是以 purchase 为终止而进行分割的，也就是说如果用户最后没有购买，那么这些数据就不统计。
 - `mvindex=t` 如果是 `null` 的情况下自动插入为 `NULL`。
@@ -268,6 +269,7 @@ index="tutorialdata_access"
 ```
 
 上述 SPL 需要注意的几点：
+
 - `diff_bytes` 进过了几轮数据填充的操作，需要仔细阅读每一行结果。
 - 因为不是需要最终结果，而是要保持一个结果到所有行中，因此用到的命令是 `eventstats` 而不是直接进行计算的 `stats`。
 - 在 MLTK 中有 `fit Imputer` 自选方法进行快速填充，不需要自己手算。
