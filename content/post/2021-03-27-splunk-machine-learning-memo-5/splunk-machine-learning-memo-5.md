@@ -3,7 +3,7 @@ title: 为 Splunk 用户准备的数据分析实践指南阅读笔记（第六�
 date: '2021-03-27'
 slug: splunk-machine-learning-memo-5
 categories: [中文]
-tags: [machine-learning,memo]
+tags: [machine-learning,splunk,memo]
 thumbnailImage: 'https://z3.ax1x.com/2021/03/14/6B9oHx.jpg'
 thumbnailImagePosition: right
 summary: '第六章《使用 Splunk 进行特征量评价》的阅读笔记。讲述了在 Splunk 中如何使用各种分析可视化的图、Macro 或者命令计算评估数值来对特征量进行评估。'

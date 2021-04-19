@@ -3,7 +3,7 @@ title: 为 Splunk 用户准备的数据分析实践指南阅读笔记（第三�
 date: '2021-03-19'
 slug: splunk-machine-learning-memo-2
 categories: [中文]
-tags: [machine-learning,memo]
+tags: [machine-learning,splunk,memo]
 thumbnailImage: 'https://z3.ax1x.com/2021/03/14/6B9oHx.jpg'
 thumbnailImagePosition: right
 summary: '第三章《基于 Splunk / MLTK 的机器学习》的阅读笔记。主要是讲解一些常用的机器学习算法，和在 Splunk 中的一些相关 Demo。'

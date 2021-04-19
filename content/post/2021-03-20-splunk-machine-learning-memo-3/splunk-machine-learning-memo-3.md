@@ -3,7 +3,7 @@ title: 为 Splunk 用户准备的数据分析实践指南阅读笔记（第四�
 date: '2021-03-20'
 slug: splunk-machine-learning-memo-3
 categories: [中文]
-tags: [machine-learning,memo]
+tags: [machine-learning,splunk,memo]
 thumbnailImage: 'https://z3.ax1x.com/2021/03/14/6B9oHx.jpg'
 thumbnailImagePosition: right
 summary: '第四章《往 Splunk 导入数据的基本操作》的阅读笔记。主要是讲解如何往 Splunk 中导入数据和设置 SPL 使用环境的工作流程。'

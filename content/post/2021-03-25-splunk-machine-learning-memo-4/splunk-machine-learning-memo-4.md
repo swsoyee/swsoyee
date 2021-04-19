@@ -3,7 +3,7 @@ title: 为 Splunk 用户准备的数据分析实践指南阅读笔记（第五�
 date: '2021-03-25'
 slug: splunk-machine-learning-memo-4
 categories: [中文]
-tags: [machine-learning,memo]
+tags: [machine-learning,splunk,memo]
 thumbnailImage: 'https://z3.ax1x.com/2021/03/14/6B9oHx.jpg'
 thumbnailImagePosition: right
 summary: '第五章《生成特征量的预处理和方法》的阅读笔记。主要是讲解如何用 SPL 来进行数据预处理、特征量加工等。'
