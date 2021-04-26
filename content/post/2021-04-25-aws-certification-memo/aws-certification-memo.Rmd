@@ -12,11 +12,11 @@ thumbnailImagePosition: right
 summary: '本文为自己在通过阅读「AWS 認定　クラウドプラクティショナー」这本书进行备考时候所记录的一些备考点。'
 ---
 
-<div class="alert info">
 书看了一遍，感觉考试难度确实不高，相当于 AWS 的入门介绍，可能即使这个证考出来也不会对自己的职业生涯有很大帮助。  
 不过混迹在日本互联网，很多中小型企业也都有在用 AWS 来开展他们的服务，因此对 AWS 的各种专业名词有所了解也不会有什么负面影响。  
 此外，通过这次阅读，也知道了不少日文互联网行业的专业名词和一些相关的云概念，还是要告诉自己相信所花的这些时间是值得的吧。
-</div>
+
+---
 
 ## 2.1 何为云
 
@@ -542,3 +542,10 @@ AWS Elastic Beanstalk 是一项易于使用的服务，用于在熟悉的服务�
 - 开发人员方案
 - 业务方案
 - 企业方案
+
+---
+
+以上为本书的主要内容。
+接下来可以看下[备战 AWS Certification 考试](https://aws.amazon.com/cn/certification/certification-prep/)中的[考试指南](https://d1.awsstatic.com/zh_CN/training-and-certification/docs-cloud-practitioner/AWS-Certified-Cloud-Practitioner_Exam-Guide.pdf)和去找一些真题来确认一下自己的掌握程度了。
+考试本身可以选择中文版进行考试，因此考试时间方面应该问题不大（毕竟已经是所有考试里面最简单的一个了）。
+争取 5 月份就把它拿下吧，然后去备考已经交了钱了的 Tableau Desktop Specialist。
