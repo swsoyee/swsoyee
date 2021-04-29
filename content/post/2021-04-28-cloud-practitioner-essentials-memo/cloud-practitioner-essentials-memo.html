@@ -1,0 +1,259 @@
+---
+title: 《AWS 云从业者基础知识》对考点查漏补缺
+date: '2021-04-28'
+slug: cloud-practitioner-essentials-memo
+categories: [中文]
+tags: [aws,memo]
+output:
+  blogdown::html_page:
+    toc: true
+thumbnailImage: 'https://z3.ax1x.com/2021/04/29/gF4l26.png'
+thumbnailImagePosition: right
+summary: '在阅读完了「AWS 認定　クラウドプラクティショナー」之后，找了官网的测试题进行了一次摸底，
+发现还有部分知识点没有被提及。仅仅凭借该书就去考试的话可能还是稍稍有些不稳定因素在内。'
+---
+
+<script src="/rmarkdown-libs/accessible-code-block/empty-anchor.js"></script>
+
+<div id="TOC">
+<ul>
+<li><a href="#aws">AWS</a></li>
+<li><a href="#区域和可用区">区域和可用区</a></li>
+<li><a href="#ec2">EC2</a></li>
+<li><a href="#实例储存和-ebs">实例储存和 EBS</a></li>
+<li><a href="#aws-quick-starts"><span>AWS Quick Starts</span></a></li>
+<li><a href="#ekselastic-kubernetes-service"><span>EKS（Elastic Kubernetes Service）</span></a></li>
+<li><a href="#sqsamazon-simple-queue-service"><span>SQS（Amazon Simple Queue Service）</span></a></li>
+<li><a href="#aws-outposts"><span>AWS Outposts</span></a></li>
+<li><a href="#aws-fargate"><span>AWS Fargate</span></a></li>
+<li><a href="#aws-elastic-beanstalk">AWS Elastic Beanstalk</a></li>
+<li><a href="#安全组">安全组</a></li>
+<li><a href="#网络访问控制列表-acl">网络访问控制列表 (ACL)</a></li>
+<li><a href="#s3">S3</a></li>
+<li><a href="#ebs-卷和-efs-卷">EBS 卷和 EFS 卷</a></li>
+<li><a href="#managed-blockchain"><span>Managed Blockchain</span></a></li>
+<li><a href="#amazon-dynamodb">Amazon DynamoDB</a></li>
+<li><a href="#amazon-documentdb"><span>Amazon DocumentDB</span></a></li>
+<li><a href="#amazon-quantum-ledger-database-amazon-qldb">Amazon Quantum Ledger Database (Amazon QLDB)</a></li>
+<li><a href="#iam-策略">IAM 策略</a></li>
+<li><a href="#服务控制策略-scp">服务控制策略 (SCP)</a></li>
+<li><a href="#amazon-guardduty"><span>Amazon GuardDuty</span></a></li>
+<li><a href="#amazon-inspector">Amazon Inspector</a></li>
+<li><a href="#aws-artifact">AWS Artifact</a></li>
+<li><a href="#aws-key-management-service-aws-kms">AWS Key Management Service (AWS KMS)</a></li>
+<li><a href="#trusted-advisor">Trusted Advisor</a></li>
+<li><a href="#aws-cost-explorer">AWS Cost Explorer</a></li>
+<li><a href="#aws-云采用框架-aws-caf">AWS 云采用框架 (AWS CAF)</a></li>
+<li><a href="#aws-snowmobile">AWS Snowmobile</a></li>
+<li><a href="#六大迁移策略">六大迁移策略</a></li>
+<li><a href="#架构完善的框架">架构完善的框架</a></li>
+<li><a href="#aws-中的-ai-和-ml">AWS 中的 AI 和 ML</a></li>
+</ul>
+</div>
+
+<p>在阅读完了<a href="https://swsoyee.vercel.app/2021/04/aws-certification-memo/">「AWS 認定　クラウドプラクティショナー」</a>之后，找了官网的测试题进行了一次摸底，
+发现还有部分知识点没有被提及。仅仅凭借该书就去考试的话可能还是稍稍有些不稳定因素在内。
+所以就还是借助了官网的免费课程进行了一次知识点的查漏补缺。</p>
+<p>课程是免费的<a href="https://aws.amazon.com/cn/training/course-descriptions/cloud-practitioner-essentials/">AWS 云从业者基础知识（第二版）</a>，
+只要注册账号就可以参加学习了。</p>
+<div class="figure">
+<img src="https://z3.ax1x.com/2021/04/29/gF4l26.png" alt="" />
+<p class="caption">《AWS 云从业者基础知识（第二版）》</p>
+</div>
+<p>通过看过一边书，了解了大概会出现哪些名词考点，因此这次为了节省时间就不对详细看每个视频课程的讲解了。
+如果有时间的话，可能老老实实看一边记忆会更牢，这应该是毋庸置疑了。</p>
+<p>「AWS 認定　クラウドプラクティショナー」一书里没有课程的模块 9 和模块 10，因此这两部分可以着重补一下，免得考试可能会出到。
+此外，该课程的最终评估题库貌似从前面各章节小测里抽取 30 道题作为最终评估，用来当模拟考试感觉也不错。</p>
+<div class="info-warning">
+<p>出于版权问题的考虑，这里只列一些漏掉或者不容易记住的知识点。更多的是个人用目的。</p>
+</div>
+<div id="aws" class="section level2">
+<h2>AWS</h2>
+<ul>
+<li>云计算是通过拥有大量用户平衡各服务的使用量从而降低成本。</li>
+</ul>
+</div>
+<div id="区域和可用区" class="section level2">
+<h2>区域和可用区</h2>
+<p>区域：一个独立的地理位置，具有多个彼此隔离的站点。
+可用区：AWS 全球基础设施的完全隔离部分。</p>
+</div>
+<div id="ec2" class="section level2">
+<h2>EC2</h2>
+<p>EC2 拥有内存优化型、计算优化型、存储优化型和通用型几种类型。</p>
+<ul>
+<li>计算优化适合批处理工作；</li>
+<li>内存优化适合高性能数据库；</li>
+<li>存储优化适用于高 I/O 处理。</li>
+</ul>
+</div>
+<div id="实例储存和-ebs" class="section level2">
+<h2>实例储存和 EBS</h2>
+<p>实例储存适合无需长期保留的临时数据。
+而 EBS 适合需要保留的数据。当 EC2 停止时挂载在 EBS 上的数据仍然可用。
+（S3 无法挂载到 EC2 上。）</p>
+</div>
+<div id="aws-quick-starts" class="section level2">
+<h2><a href="https://aws.amazon.com/cn/quickstart/">AWS Quick Starts</a></h2>
+<p>可自动将工作负载部署到 AWS 环境中。</p>
+<blockquote>
+<p>Quick Start 是由 Amazon Web Services (AWS) 解决方案架构师和 AWS 合作伙伴构建的自动化参考部署。
+Quick Start 可帮助您基于 AWS 最佳实践在 AWS 上部署热门技术，以实现安全性和高可用性。
+这些加速器可将手动步骤从数百个减少为数个，因此您可以在短短几分钟内构建生产环境并立即投入使用。</p>
+</blockquote>
+</div>
+<div id="ekselastic-kubernetes-service" class="section level2">
+<h2><a href="https://aws.amazon.com/cn/eks">EKS（Elastic Kubernetes Service）</a></h2>
+<p>Amazon EKS 是一项完全托管的 Kubernetes 服务。便于大规模部署和管理容器化应用程序。</p>
+</div>
+<div id="sqsamazon-simple-queue-service" class="section level2">
+<h2><a href="https://aws.amazon.com/cn/sqs/">SQS（Amazon Simple Queue Service）</a></h2>
+<p>Amazon Simple Queue Service (Amazon SQS) 能够通过队列在软件组件之间发送、存储和接收消息。
+注意和 SNS 进行区别，SNS 的阅读者是用户，而 SQS 是组件。</p>
+</div>
+<div id="aws-outposts" class="section level2">
+<h2><a href="https://aws.amazon.com/cn/outposts/">AWS Outposts</a></h2>
+<p>AWS Outposts 能够让用户采用混合云方法运行基础设施。</p>
+</div>
+<div id="aws-fargate" class="section level2">
+<h2><a href="https://aws.amazon.com/cn/fargate">AWS Fargate</a></h2>
+<p>AWS Fargate 是一种适用于容器的无服务器计算引擎。</p>
+</div>
+<div id="aws-elastic-beanstalk" class="section level2">
+<h2>AWS Elastic Beanstalk</h2>
+<p>只要用户上传应用程序，Beanstalk 就会自动处理有关容量预置、负载均衡、Auto scaling 和应用运行状况监控的部署细节。</p>
+</div>
+<div id="安全组" class="section level2">
+<h2>安全组</h2>
+<p>安全组是有状态的。这意味着它们在评估实例的新请求时，会使用以前的流量模式和流量。默认情况下，安全组会拒绝所有入站流量。
+安全组是控制 <strong>EC2</strong> 的流量进出的。</p>
+</div>
+<div id="网络访问控制列表-acl" class="section level2">
+<h2>网络访问控制列表 (ACL)</h2>
+<p>一种虚拟防火墙，用于在 <strong>子网级别</strong> 控制入站和出站流量。</p>
+</div>
+<div id="s3" class="section level2">
+<h2>S3</h2>
+<p>S3 Glacier 和 S3 Glacier Deep Archive 类针对存档数据进行了优化。
+存储在 S3 Glacier 存储类中的对象可以在几分钟到几小时内检索出来，而 S3 Glacier Deep Archive 存储类中的对象可以在 12 小时内检索出来。</p>
+</div>
+<div id="ebs-卷和-efs-卷" class="section level2">
+<h2>EBS 卷和 EFS 卷</h2>
+<p>EBS 卷将数据存储在 <strong>单个可用区</strong> 中。Amazon EFS 文件系统将数据存储在 <strong>多个可用区</strong> 中。
+EBS 卷和它挂载到的 Amazon EC2 实例必须位于 <strong>同一可用区</strong> 中。
+EFS 文件系统中的数据可以从文件系统所在区域中的 <strong>所有可用区</strong> 同时访问。</p>
+</div>
+<div id="managed-blockchain" class="section level2">
+<h2><a href="https://aws.amazon.com/cn/managed-blockchain/">Managed Blockchain</a></h2>
+<p>通过开源框架创建和管理区块链网络。区块链是一个分布式分类账系统，能够让多方在没有中央授权的情况下运行交易和共享数据。</p>
+</div>
+<div id="amazon-dynamodb" class="section level2">
+<h2>Amazon DynamoDB</h2>
+<p>一种键值数据库服务。它采用无服务器架构，因此无需预置、修补或管理服务器。</p>
+</div>
+<div id="amazon-documentdb" class="section level2">
+<h2><a href="https://aws.amazon.com/cn/documentdb/">Amazon DocumentDB</a></h2>
+<p>一项支持 MongoDB 工作负载的文档数据库服务。</p>
+</div>
+<div id="amazon-quantum-ledger-database-amazon-qldb" class="section level2">
+<h2>Amazon Quantum Ledger Database (Amazon QLDB)</h2>
+<p>一种分类账数据库服务。用户可以使用 Amazon QLDB 查看对应用程序数据所做的所有更改的完整历史记录。</p>
+</div>
+<div id="iam-策略" class="section level2">
+<h2>IAM 策略</h2>
+<p>IAM 策略是一个文档，用于授予或拒绝对 AWS 服务和资源的权限。
+而 IAM 角色是一种身份，可以通过担任这种身份来获得 <strong>对权限的临时</strong> 访问。
+如果不是需要 <strong>临时</strong> 的权限的话，可以将 IAM 策略附加到 IAM 组来完成。</p>
+</div>
+<div id="服务控制策略-scp" class="section level2">
+<h2>服务控制策略 (SCP)</h2>
+<p>集中控制组织中账户的权限。</p>
+</div>
+<div id="amazon-guardduty" class="section level2">
+<h2><a href="https://aws.amazon.com/cn/guardduty/">Amazon GuardDuty</a></h2>
+<p>提供对 AWS 基础设施和资源提供智能威胁检测。它通过持续监控 AWS 环境中的网络活动和账户行为来识别威胁。</p>
+</div>
+<div id="amazon-inspector" class="section level2">
+<h2>Amazon Inspector</h2>
+<p>检查应用程序的安全漏洞以及不符合安全性最佳实践的地方，例如对 Amazon EC2 实例进行开放访问和安装易受攻击的软件版本。</p>
+</div>
+<div id="aws-artifact" class="section level2">
+<h2>AWS Artifact</h2>
+<p>这项服务使用户能够按需访问 <strong>AWS 安全性与合规性报告</strong> 和 <strong>选择在线协议</strong>。</p>
+</div>
+<div id="aws-key-management-service-aws-kms" class="section level2">
+<h2>AWS Key Management Service (AWS KMS)</h2>
+<p>使用户能够创建和使用加密密钥执行加密操作。</p>
+</div>
+<div id="trusted-advisor" class="section level2">
+<h2>Trusted Advisor</h2>
+<p>可提供 <strong>检查 AWS 环境</strong> 并根据最佳实践 <strong>提供实时建议</strong>。
+可针对下述 5 个类别提供最佳实践建议。</p>
+<ul>
+<li>成本优化：包括对可消除且提供成本节省的未使用和空闲的资源的各种检查。</li>
+<li>性能：建议如何利用预置的吞吐量来帮助您提升服务的性能。</li>
+<li>安全性：有助于查看权限以及识别要启用的 AWS 安全功能的各种检查。</li>
+<li>容错能力：有助于提高应用程序的可用性和冗余性的各种检查。</li>
+<li>服务限制</li>
+</ul>
+</div>
+<div id="aws-cost-explorer" class="section level2">
+<h2>AWS Cost Explorer</h2>
+<p>可直观查看和管理随时间变化的 AWS 成本和使用情况。</p>
+</div>
+<div id="aws-云采用框架-aws-caf" class="section level2">
+<h2>AWS 云采用框架 (AWS CAF)</h2>
+<p>将需要关注的六个领域分为六个不同的视觉。
+一般来说，<strong>业务</strong>、<strong>人员</strong> 和 <strong>监管</strong> 视角侧重于业务能力，而 <strong>平台</strong>、<strong>安全</strong> 和 <strong>运维</strong> 视角侧重于技术能力。</p>
+<ul>
+<li><p>业务视角：可以帮助您从业务策略和 IT 策略分离的模式转变为业务策略和 IT 策略一致的模式。（财务）</p></li>
+<li><p>人员视角：可以帮助人力资源 (HR) 员工为其团队做好采用云的准备，方法是更新组织流程和员工技能以纳入基于云的能力。（HR）</p></li>
+<li><p>监管视角：可以帮助您确定和实施 IT 监管的最佳实践，并利用技术为业务流程提供支持。（CIO）</p></li>
+<li><p>平台视角：包括在云上实施新解决方案以及将本地工作负载迁移到云的原则和模式。（CTO、架构师）</p></li>
+<li><p>安全视角：可以帮助确定不合规的方面，并规划持续的安全举措。可帮助安排措施的选择和实施。（CISO、IT 安全）</p></li>
+<li><p>运维视角：侧重于运营和恢复 IT 工作负载，以满足业务利益相关方的要求。（IT 运维、IT 支持）</p></li>
+</ul>
+</div>
+<div id="aws-snowmobile" class="section level2">
+<h2>AWS Snowmobile</h2>
+<p>Snowcone：一种坚固且安全的小型边缘计算和数据传输设备。具有 2 个 CPU、4GB 内存和 8TB 的可用存储容量。
+Snowball Edge Storage Optimized：存储容量为 80 PB。适合 <strong>大型数据迁移</strong> 和 <strong>重复传输工作流程</strong> 以及具有 <strong>较高容量需求的本地计算</strong>。
+Snowball Edge Compute Optimized：可为机器学习、全动视频分析、分析和本地计算堆栈等使用案例提供功能强大的计算资源。
+Snowmobile：存储容量为 100 PB。</p>
+</div>
+<div id="六大迁移策略" class="section level2">
+<h2>六大迁移策略</h2>
+<p>将应用程序迁移到云最常用的六项迁移策略包括：</p>
+<ol style="list-style-type: decimal">
+<li>重新托管：直接迁移。</li>
+<li>更换平台：修补后迁移，进行一些云优化，如把 MySQL 换成 Amazon Aurora 等。</li>
+<li>重构/重新设计架构：重新写代码。</li>
+<li>重新购买：更换一些所用软件的供应商，或者直接用云服务。</li>
+<li>保留：虽然不能马上删除，但可以逐步移除，因此不一定需要费力再移到云上。</li>
+<li>停用：云上有服务可以替代了，因此无需移到云上，直接关闭即可。</li>
+</ol>
+</div>
+<div id="架构完善的框架" class="section level2">
+<h2>架构完善的框架</h2>
+<p>架构完善的框架基于五大支柱：</p>
+<ol style="list-style-type: decimal">
+<li>卓越运营：侧重于运行和监控系统来实现商业价值，进而持续改进流程和程序。如 CD/CI。</li>
+<li>安全性：通过检查数据的完整性以及利用加密来保护系统。</li>
+<li>可靠性：侧重于恢复规划，如在故障中恢复服务。</li>
+<li>性能效率：高效利用 IT 和计算资源。如根据负载和内存对所使用的 EC2 类型进行决策。</li>
+<li>成本优化：检查是否高估了所需的 EC2 服务器容量，从而浪费资金等。</li>
+</ol>
+</div>
+<div id="aws-中的-ai-和-ml" class="section level2">
+<h2>AWS 中的 AI 和 ML</h2>
+<p>Amazon Augmented AI（A2I）为常见的机器学习使用案例（如内容审核和文档文本提取）提供内置人工审核工作流程。</p>
+<ul>
+<li>利用 Amazon Transcribe 将语音转换为文本。</li>
+<li>利用 Amazon Comprehend 发现文本中的模式。</li>
+<li>利用 Amazon Fraud Detector 识别潜在的欺诈性在线活动。</li>
+<li>利用 Amazon Lex 构建语音和文本聊天机器人。</li>
+<li>利用 AWS DeepPracer —— 一款自动驾驶 1:18 比例赛车，测试强化学习模型。</li>
+<li>利用 Amazon SageMaker，快速轻松地开始处理机器学习项目。</li>
+<li>利用 Amazon Textract 自动从扫描的文档中提取文本和数据。</li>
+</ul>
+</div>
