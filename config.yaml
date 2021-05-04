@@ -94,3 +94,8 @@ params:
       url: /#about
   footer:
     copyright: "<a href=\"https://github.com/swsoyee\">Su Wei</a>"
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
