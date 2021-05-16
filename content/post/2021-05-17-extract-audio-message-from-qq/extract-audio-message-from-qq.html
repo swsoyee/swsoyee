@@ -1,0 +1,196 @@
+---
+title: 如何在 Mac 环境下提取 QQ 语音消息内容
+date: '2021-05-16'
+slug: extract-audio-message-from-qq
+categories: [中文]
+tags: [tools]
+output:
+  blogdown::html_page:
+    toc: true
+summary: '本文介绍了如何通过 Mac 版 QQ 并且使用 `silk-v3-decoder` 将非标准编码 `amr` 语音消息提取并且转换成普通 `mp3` 格式。'
+---
+
+<script src="/rmarkdown-libs/accessible-code-block/empty-anchor.js"></script>
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<div id="TOC">
+<ul>
+<li><a href="#操作环境">1. 操作环境</a></li>
+<li><a href="#所需工具">2. 所需工具</a></li>
+<li><a href="#工具安装">3. 工具安装</a></li>
+<li><a href="#音频获取">4. 音频获取</a></li>
+<li><a href="#音频转换">5. 音频转换</a></li>
+<li><a href="#总结">6. 总结</a></li>
+</ul>
+</div>
+
+<p>在“古早的”互联网时代，如果要把 QQ 中的各种信息备份导出，一般只需要找到 QQ 应用程序的安装文件夹的一些对应管理文件夹，直接把里面的资料复制出来即可。<br />
+而随着 QQ 的各种升级，如果要导出一些如语音信息等，就需要花费一番功夫了。<br />
+只要在网上搜一下，一般能看到的教程可归类为以下几种：</p>
+<ol style="list-style-type: decimal">
+<li>年代久远的教程，随着 QQ 的升级直接从文件夹中复制的方法早已不适用；</li>
+<li>使用各种稀奇古怪的小软件，对聊天记录等进行提取，但可行性不能保证，成功概率不高造成浪费时间；</li>
+<li>可以选择在手机或者电脑上录屏，然后在过程中按顺序点击语音（最为常见且一般的做法）。</li>
+</ol>
+<p>作为原始文件强迫症患者，本来语音消息就经过高度压缩了，岂能忍受录屏的方式再折磨一波！<br />
+如果只是想要音频的情况下，还得加多一道从视频中提取音轨一步<del>（说麻烦也不是特别麻烦，但也挺不爽）</del>。
+作为码农，还是直接提取源文件的方法更为舒心。</p>
+<div id="操作环境" class="section level2">
+<h2>1. 操作环境</h2>
+<p>由于自己的电脑是 Mac M1 环境，因此也就按照 M1 的来写了。
+Intel 的 Mac 基本没啥区别，Windows 的话做法不太一样但是思路是类似的，具体操作更为简单。</p>
+</div>
+<div id="所需工具" class="section level2">
+<h2>2. 所需工具</h2>
+<p>不用乱七八糟的小 or 大软件，直接用开源工具搞定：</p>
+<ol style="list-style-type: decimal">
+<li><a href="https://formulae.brew.sh/formula/gcc">gcc</a></li>
+<li><a href="https://formulae.brew.sh/formula/ffmpeg">ffmpeg</a></li>
+<li><a href="https://github.com/kn007/silk-v3-decoder">silk-v3-decoder</a></li>
+</ol>
+<p><code>gcc</code> 和 <code>ffmpeg</code> 是 <code>silk-v3-decoder</code> 的依赖，因此需要个别安装。</p>
+</div>
+<div id="工具安装" class="section level2">
+<h2>3. 工具安装</h2>
+<p>首先安装 <code>gcc</code> 和 <code>ffmpeg</code>，用 <code>homebrew</code> 一条命令搞定。<br />
+PS：没安装 <code>homebrew</code> 的话可以自行安装，教程非常多就不赘述了。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># 安装</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="ex">brew</span> install gcc</span>
+<span id="cb1-3"><a href="#cb1-3"></a></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="co"># 检查是否安装</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="fu">gcc</span> --version</span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="co"># 显示结果</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="ex">Configured</span> with: --prefix=/Library/Developer/CommandLineTools/usr --with-gxx-include-dir=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/4.2.1</span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="ex">Apple</span> clang version 12.0.5 (clang-1205.0.22.9)</span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="ex">Target</span>: x86_64-apple-darwin20.4.0</span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="ex">Thread</span> model: posix</span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="ex">InstalledDir</span>: /Library/Developer/CommandLineTools/usr/bin</span></code></pre></div>
+<p>安装 <code>ffmpeg</code>：</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># 安装</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="ex">brew</span> install ffmpeg</span>
+<span id="cb2-3"><a href="#cb2-3"></a></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="co"># 如果在 M1 下可能会出现下述提示，只需要按照提示添加参数运行即可</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="ex">Error</span>: Cannot install under Rosetta 2 in ARM default prefix (/opt/homebrew)!</span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="ex">To</span> rerun under ARM use:</span>
+<span id="cb2-7"><a href="#cb2-7"></a>    <span class="fu">arch</span> -arm64 brew install ...</span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="ex">To</span> install under x86_64, install Homebrew into /usr/local.</span>
+<span id="cb2-9"><a href="#cb2-9"></a></span>
+<span id="cb2-10"><a href="#cb2-10"></a><span class="co"># 再次尝试</span></span>
+<span id="cb2-11"><a href="#cb2-11"></a><span class="fu">arch</span> -arm64 brew install ffmpeg</span>
+<span id="cb2-12"><a href="#cb2-12"></a></span>
+<span id="cb2-13"><a href="#cb2-13"></a><span class="co"># 如果没有什么特别报错，安装完成后测试是否可用</span></span>
+<span id="cb2-14"><a href="#cb2-14"></a><span class="ex">fmpeg</span> -version</span>
+<span id="cb2-15"><a href="#cb2-15"></a><span class="co"># 显示结果</span></span>
+<span id="cb2-16"><a href="#cb2-16"></a><span class="ex">ffmpeg</span> version 4.4 Copyright (c) <span class="ex">2000-2021</span> the FFmpeg developers</span>
+<span id="cb2-17"><a href="#cb2-17"></a><span class="ex">built</span> with Apple clang version 12.0.5 (clang-1205.0.22.9)</span>
+<span id="cb2-18"><a href="#cb2-18"></a><span class="ex">configuration</span>: --prefix=/opt/homebrew/Cellar/ffmpeg/4.4_1 --enable-shared --enable-pthreads --enable-version3 --enable-avresample --cc=clang --host-cflags= --host-ldflags= --enable-ffplay --enable-gnutls --enable-gpl --enable-libaom --enable-libbluray --enable-libdav1d --enable-libmp3lame --enable-libopus --enable-librav1e --enable-librubberband --enable-libsnappy --enable-libsrt --enable-libtesseract --enable-libtheora --enable-libvidstab --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxml2 --enable-libxvid --enable-lzma --enable-libfontconfig --enable-libfreetype --enable-frei0r --enable-libass --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libopenjpeg --enable-libspeex --enable-libsoxr --enable-libzmq --enable-libzimg --disable-libjack --disable-indev=jack --enable-videotoolbox</span>
+<span id="cb2-19"><a href="#cb2-19"></a><span class="ex">libavutil</span>      56. 70.100 / 56. 70.100</span>
+<span id="cb2-20"><a href="#cb2-20"></a><span class="ex">libavcodec</span>     58.134.100 / 58.134.100</span>
+<span id="cb2-21"><a href="#cb2-21"></a><span class="ex">libavformat</span>    58. 76.100 / 58. 76.100</span>
+<span id="cb2-22"><a href="#cb2-22"></a><span class="ex">libavdevice</span>    58. 13.100 / 58. 13.100</span>
+<span id="cb2-23"><a href="#cb2-23"></a><span class="ex">libavfilter</span>     7.110.100 /  7.110.100</span>
+<span id="cb2-24"><a href="#cb2-24"></a><span class="ex">libavresample</span>   4.  0.  0 /  4.  0.  0</span>
+<span id="cb2-25"><a href="#cb2-25"></a><span class="ex">libswscale</span>      5.  9.100 /  5.  9.100</span>
+<span id="cb2-26"><a href="#cb2-26"></a><span class="ex">libswresample</span>   3.  9.100 /  3.  9.100</span>
+<span id="cb2-27"><a href="#cb2-27"></a><span class="ex">libpostproc</span>    55.  9.100 / 55.  9.100</span></code></pre></div>
+<p>完成上述依赖安装后，直接克隆 <a href="https://github.com/kn007/silk-v3-decoder"><code>kn007/silk-v3-decoder</code></a> 仓库代码即可使用。
+已经安装了 <code>git</code> 的话可以用命令后的形式下载（克隆），没有的话也可以点击右上角的 <code>Code &gt; Download ZIP</code> 后解压使用。</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># 用 git 示例</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="fu">git</span> clone https://github.com/kn007/silk-v3-decoder.git</span></code></pre></div>
+<p>至此所需工具就准备好了。</p>
+</div>
+<div id="音频获取" class="section level2">
+<h2>4. 音频获取</h2>
+<p>那么接下来，关键的音频文件如何获取呢？</p>
+<p>如果是用手机 QQ 的话，首先需要把聊天记录同步（漫游）到云端，再登陆 Mac 版 QQ，点击播放语音，就可以在 Mac 上的 QQ 程序文件夹中下载好语音文件了。
+如果是超过了时限（普通用户最近 7 天，VIP 最近 30 天，SVIP 最近 2 年）的语音消息，可以长按语音消息，将它收藏起来。
+然后到 Mac QQ 中的收藏里点击一下播放语音同样可以将其下载到电脑里。</p>
+<p>完成下载后，以收藏中的语音文件举例，可以在下述文件夹中获取到被编码过的非标准 <code>arm</code> 格式音频文件。
+这种非标准音频文件是无法直接播放的，因此就需要用到前面安装好的 <code>silk-v3-decoder</code> 来进行转码成一般播放器都能用的如 <code>mp3</code> 格式文件。</p>
+<p>在收藏中点击过播放的音频文件，如果是 Mac 系统可以在下面的路径中获取到。</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># `username` 为自身的用户名，根据实际情况修改</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="fu">ls</span> /Users/username/Library/Containers/com.tencent.qq/Data/Library/Caches/PTT/*.amr</span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="co"># 结果（*为省略内容）</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="ex">/Users/username/Library/Containers/com.tencent.qq/Data/Library/Caches/PTT/515*.amr</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="ex">/Users/username/Library/Containers/com.tencent.qq/Data/Library/Caches/PTT/61D*.amr</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a><span class="ex">/Users/username/Library/Containers/com.tencent.qq/Data/Library/Caches/PTT/8A8*.amr</span></span>
+<span id="cb4-7"><a href="#cb4-7"></a><span class="ex">/Users/username/Library/Containers/com.tencent.qq/Data/Library/Caches/PTT/C35*.amr</span></span></code></pre></div>
+<p>为了方便操作，也可以将这些 <code>amr</code> 文件用 <code>cp</code> 命令复制到别的文件夹（比如桌面）去。</p>
+</div>
+<div id="音频转换" class="section level2">
+<h2>5. 音频转换</h2>
+<p>接下来就是最后一步的转换了。<br />
+在 <a href="https://github.com/kn007/silk-v3-decoder">GitHub 的 README</a> 中其实也写明了用法，直接执行命令即可（支持批量转换）。</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># 确保自己所处位置在 silk-v3-decoder 文件夹下，或者能够正确访问到执行的脚本（*为省略内容）</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="fu">sh</span> converter.sh 61D*.amr mp3</span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="co"># 输出后可在原始文件所处目录下得到转换后的文件</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="ex">-e</span> [OK] Convert 61D*.amr To 61D*.mp3 Finish.</span></code></pre></div>
+</div>
+<div id="总结" class="section level2">
+<h2>6. 总结</h2>
+<p>通过这种方式，可以将 QQ 语音中编码过的 <code>amr</code> 转成一般播放器都能支持的 <code>mp3</code>，但是为了从服务器上下载语音到本地，还是避免不了手动点击播放这一项操作<del>（操作全自动化洁癖患者）</del>。
+或许这个方法只适合中少数量的语音信息提取吧。</p>
+</div>

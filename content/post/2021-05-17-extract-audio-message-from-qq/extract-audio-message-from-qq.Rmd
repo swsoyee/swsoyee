@@ -1,0 +1,141 @@
+---
+title: 如何在 Mac 环境下提取 QQ 语音消息内容
+date: '2021-05-16'
+slug: extract-audio-message-from-qq
+categories: [中文]
+tags: [tools]
+output:
+  blogdown::html_page:
+    toc: true
+summary: '本文介绍了如何通过 Mac 版 QQ 并且使用 `silk-v3-decoder` 将非标准编码 `amr` 语音消息提取并且转换成普通 `mp3` 格式。'
+---
+
+在“古早的”互联网时代，如果要把 QQ 中的各种信息备份导出，一般只需要找到 QQ 应用程序的安装文件夹的一些对应管理文件夹，直接把里面的资料复制出来即可。  
+而随着 QQ 的各种升级，如果要导出一些如语音信息等，就需要花费一番功夫了。  
+只要在网上搜一下，一般能看到的教程可归类为以下几种：
+
+1. 年代久远的教程，随着 QQ 的升级直接从文件夹中复制的方法早已不适用；
+2. 使用各种稀奇古怪的小软件，对聊天记录等进行提取，但可行性不能保证，成功概率不高造成浪费时间；
+3. 可以选择在手机或者电脑上录屏，然后在过程中按顺序点击语音（最为常见且一般的做法）。
+
+作为原始文件强迫症患者，本来语音消息就经过高度压缩了，岂能忍受录屏的方式再折磨一波！  
+如果只是想要音频的情况下，还得加多一道从视频中提取音轨一步~~（说麻烦也不是特别麻烦，但也挺不爽）~~。
+作为码农，还是直接提取源文件的方法更为舒心。
+
+## 1. 操作环境
+
+由于自己的电脑是 Mac M1 环境，因此也就按照 M1 的来写了。
+Intel 的 Mac 基本没啥区别，Windows 的话做法不太一样但是思路是类似的，具体操作更为简单。
+
+## 2. 所需工具
+
+不用乱七八糟的小 or 大软件，直接用开源工具搞定：
+
+1. [gcc](https://formulae.brew.sh/formula/gcc)
+2. [ffmpeg](https://formulae.brew.sh/formula/ffmpeg)
+3. [silk-v3-decoder](https://github.com/kn007/silk-v3-decoder)
+
+`gcc` 和 `ffmpeg` 是 `silk-v3-decoder` 的依赖，因此需要个别安装。
+
+## 3. 工具安装
+
+首先安装 `gcc` 和 `ffmpeg`，用 `homebrew` 一条命令搞定。  
+PS：没安装 `homebrew` 的话可以自行安装，教程非常多就不赘述了。
+
+```bash
+# 安装
+brew install gcc
+
+# 检查是否安装
+gcc --version
+# 显示结果
+Configured with: --prefix=/Library/Developer/CommandLineTools/usr --with-gxx-include-dir=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/4.2.1
+Apple clang version 12.0.5 (clang-1205.0.22.9)
+Target: x86_64-apple-darwin20.4.0
+Thread model: posix
+InstalledDir: /Library/Developer/CommandLineTools/usr/bin
+```
+
+安装 `ffmpeg`：
+
+```bash
+# 安装
+brew install ffmpeg
+
+# 如果在 M1 下可能会出现下述提示，只需要按照提示添加参数运行即可
+Error: Cannot install under Rosetta 2 in ARM default prefix (/opt/homebrew)!
+To rerun under ARM use:
+    arch -arm64 brew install ...
+To install under x86_64, install Homebrew into /usr/local.
+
+# 再次尝试
+arch -arm64 brew install ffmpeg
+
+# 如果没有什么特别报错，安装完成后测试是否可用
+fmpeg -version
+# 显示结果
+ffmpeg version 4.4 Copyright (c) 2000-2021 the FFmpeg developers
+built with Apple clang version 12.0.5 (clang-1205.0.22.9)
+configuration: --prefix=/opt/homebrew/Cellar/ffmpeg/4.4_1 --enable-shared --enable-pthreads --enable-version3 --enable-avresample --cc=clang --host-cflags= --host-ldflags= --enable-ffplay --enable-gnutls --enable-gpl --enable-libaom --enable-libbluray --enable-libdav1d --enable-libmp3lame --enable-libopus --enable-librav1e --enable-librubberband --enable-libsnappy --enable-libsrt --enable-libtesseract --enable-libtheora --enable-libvidstab --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxml2 --enable-libxvid --enable-lzma --enable-libfontconfig --enable-libfreetype --enable-frei0r --enable-libass --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libopenjpeg --enable-libspeex --enable-libsoxr --enable-libzmq --enable-libzimg --disable-libjack --disable-indev=jack --enable-videotoolbox
+libavutil      56. 70.100 / 56. 70.100
+libavcodec     58.134.100 / 58.134.100
+libavformat    58. 76.100 / 58. 76.100
+libavdevice    58. 13.100 / 58. 13.100
+libavfilter     7.110.100 /  7.110.100
+libavresample   4.  0.  0 /  4.  0.  0
+libswscale      5.  9.100 /  5.  9.100
+libswresample   3.  9.100 /  3.  9.100
+libpostproc    55.  9.100 / 55.  9.100
+```
+
+完成上述依赖安装后，直接克隆 [`kn007/silk-v3-decoder`](https://github.com/kn007/silk-v3-decoder) 仓库代码即可使用。
+已经安装了 `git` 的话可以用命令后的形式下载（克隆），没有的话也可以点击右上角的 `Code > Download ZIP` 后解压使用。
+
+```bash
+# 用 git 示例
+git clone https://github.com/kn007/silk-v3-decoder.git
+```
+
+至此所需工具就准备好了。
+
+## 4. 音频获取
+
+那么接下来，关键的音频文件如何获取呢？
+
+如果是用手机 QQ 的话，首先需要把聊天记录同步（漫游）到云端，再登陆 Mac 版 QQ，点击播放语音，就可以在 Mac 上的 QQ 程序文件夹中下载好语音文件了。
+如果是超过了时限（普通用户最近 7 天，VIP 最近 30 天，SVIP 最近 2 年）的语音消息，可以长按语音消息，将它收藏起来。
+然后到 Mac QQ 中的收藏里点击一下播放语音同样可以将其下载到电脑里。
+
+完成下载后，以收藏中的语音文件举例，可以在下述文件夹中获取到被编码过的非标准 `arm` 格式音频文件。
+这种非标准音频文件是无法直接播放的，因此就需要用到前面安装好的 `silk-v3-decoder` 来进行转码成一般播放器都能用的如 `mp3` 格式文件。
+
+在收藏中点击过播放的音频文件，如果是 Mac 系统可以在下面的路径中获取到。
+
+```bash
+# `username` 为自身的用户名，根据实际情况修改
+ls /Users/username/Library/Containers/com.tencent.qq/Data/Library/Caches/PTT/*.amr
+# 结果（*为省略内容）
+/Users/username/Library/Containers/com.tencent.qq/Data/Library/Caches/PTT/515*.amr
+/Users/username/Library/Containers/com.tencent.qq/Data/Library/Caches/PTT/61D*.amr
+/Users/username/Library/Containers/com.tencent.qq/Data/Library/Caches/PTT/8A8*.amr
+/Users/username/Library/Containers/com.tencent.qq/Data/Library/Caches/PTT/C35*.amr
+```
+
+为了方便操作，也可以将这些 `amr` 文件用 `cp` 命令复制到别的文件夹（比如桌面）去。
+
+## 5. 音频转换
+
+接下来就是最后一步的转换了。  
+在 [GitHub 的 README](https://github.com/kn007/silk-v3-decoder) 中其实也写明了用法，直接执行命令即可（支持批量转换）。
+
+```bash
+# 确保自己所处位置在 silk-v3-decoder 文件夹下，或者能够正确访问到执行的脚本（*为省略内容）
+sh converter.sh 61D*.amr mp3
+# 输出后可在原始文件所处目录下得到转换后的文件
+-e [OK] Convert 61D*.amr To 61D*.mp3 Finish.
+```
+
+## 6. 总结
+
+通过这种方式，可以将 QQ 语音中编码过的 `amr` 转成一般播放器都能支持的 `mp3`，但是为了从服务器上下载语音到本地，还是避免不了手动点击播放这一项操作~~（操作全自动化洁癖患者）~~。
+或许这个方法只适合中少数量的语音信息提取吧。
